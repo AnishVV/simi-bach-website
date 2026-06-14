@@ -3,477 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Overview · Simi's Bachelorette · CDMX</title>
-
-  <!-- Google Fonts -->
+  <meta name="description" content="Trip overview for Simi's CDMX bachelorette weekend." />
+  <title>Overview · Simi's Bachelorette CDMX</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-
-  <!-- Design system -->
-  <link rel="stylesheet" href="css/tokens.css" />
-  <link rel="stylesheet" href="css/globals.css" />
-  <link rel="stylesheet" href="css/components.css" />
-  <!-- Page-specific styles -->
-  <link rel="stylesheet" href="css/pages/overview.css" />
-  <link rel="stylesheet" href="css/responsive.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-<body class="page-overview">
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-nav" data-nav>
+    <a class="brand" href="index.html" aria-label="CDMX home"><span class="brand__word">CDMX</span><span aria-hidden="true">☼</span></a>
+    <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle><span></span><span></span><span></span></button>
+    <nav aria-label="Primary navigation">
+      <ul class="nav-links" data-nav-links>
+        <li><a class="nav-link" href="overview.html" aria-current="page">Overview</a></li>
+        <li><a class="nav-link" href="itinerary.html">Itinerary</a></li>
+        <li><a class="nav-link" href="guide.html">Guide</a></li>
+        <li><a class="nav-link" href="logistics.html">Logistics</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- ===================== NAV ===================== -->
-  <nav class="site-nav" id="site-nav">
-    <a href="index.html" class="nav-logo" aria-label="Home">
-      <!-- Sun-face icon SVG -->
-      <svg class="nav-sun-icon" width="22" height="22" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle cx="20" cy="20" r="10" stroke="currentColor" stroke-width="1.5"/>
-        <!-- rays -->
-        <line x1="20" y1="2"  x2="20" y2="7"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="20" y1="33" x2="20" y2="38" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="2"  y1="20" x2="7"  y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="33" y1="20" x2="38" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="5.9"  y1="5.9"  x2="9.4"  y2="9.4"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="30.6" y1="30.6" x2="34.1" y2="34.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="34.1" y1="5.9"  x2="30.6" y2="9.4"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="9.4"  y1="30.6" x2="5.9"  y2="34.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        <!-- face -->
-        <circle cx="17" cy="19" r="1.2" fill="currentColor"/>
-        <circle cx="23" cy="19" r="1.2" fill="currentColor"/>
-        <path d="M16.5 23 Q20 25.5 23.5 23" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-      </svg>
-      <span class="nav-logo__text">CDMX <span class="nav-logo__sun">☀</span></span>
-    </a>
-
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-
-    <ul class="nav-links" id="nav-links">
-      <li><a href="overview.html" class="nav-link" aria-current="page">Overview</a></li>
-      <li><a href="itinerary.html" class="nav-link">Itinerary</a></li>
-      <li><a href="guide.html" class="nav-link">Guide</a></li>
-      <li><a href="logistics.html" class="nav-link">Logistics</a></li>
-    </ul>
-  </nav>
-
-  <!-- ===================== HERO ===================== -->
-  <section class="ov-hero" id="hero">
-    <!-- Texture overlay -->
-    <div class="ov-hero__texture" aria-hidden="true"></div>
-    <!-- Dark gradient overlay -->
-    <div class="ov-hero__overlay" aria-hidden="true"></div>
-
-    <div class="ov-hero__content">
-      <!-- Decorative sun-face icon used as section marker -->
-      <div class="ov-hero__icon" aria-hidden="true">
-        <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="20" cy="20" r="10" stroke="#C7A46A" stroke-width="1.2"/>
-          <line x1="20" y1="2"  x2="20" y2="7"  stroke="#C7A46A" stroke-width="1.2" stroke-linecap="round"/>
-          <line x1="20" y1="33" x2="20" y2="38" stroke="#C7A46A" stroke-width="1.2" stroke-linecap="round"/>
-          <line x1="2"  y1="20" x2="7"  y2="20" stroke="#C7A46A" stroke-width="1.2" stroke-linecap="round"/>
-          <line x1="33" y1="20" x2="38" y2="20" stroke="#C7A46A" stroke-width="1.2" stroke-linecap="round"/>
-          <line x1="5.9"  y1="5.9"  x2="9.4"  y2="9.4"  stroke="#C7A46A" stroke-width="1.2" stroke-linecap="round"/>
-          <line x1="30.6" y1="30.6" x2="34.1" y2="34.1" stroke="#C7A46A" stroke-width="1.2" stroke-linecap="round"/>
-          <line x1="34.1" y1="5.9"  x2="30.6" y2="9.4"  stroke="#C7A46A" stroke-width="1.2" stroke-linecap="round"/>
-          <line x1="9.4"  y1="30.6" x2="5.9"  y2="34.1" stroke="#C7A46A" stroke-width="1.2" stroke-linecap="round"/>
-          <circle cx="17" cy="19" r="1.2" fill="#C7A46A"/>
-          <circle cx="23" cy="19" r="1.2" fill="#C7A46A"/>
-          <path d="M16.5 23 Q20 25.5 23.5 23" stroke="#C7A46A" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-        </svg>
-      </div>
-
-      <!-- Eyebrow -->
-      <p class="ov-hero__eyebrow eyebrow">☀&nbsp;&nbsp;THE TRIP</p>
-
-      <!-- Gold thin sunrise ornament line -->
-      <div class="ov-hero__ornament-top" aria-hidden="true"></div>
-
-      <!-- Main headline -->
-      <h1 class="ov-hero__headline">
-        LET'S CELEBRATE<br/>IN CDMX
-      </h1>
-
-      <!-- Gold sunrise ornament beneath headline -->
-      <div class="ov-hero__ornament" aria-hidden="true">
-        <svg width="180" height="18" viewBox="0 0 180 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <line x1="0" y1="9" x2="76" y2="9" stroke="#C7A46A" stroke-width="0.75"/>
-          <circle cx="90" cy="9" r="4" stroke="#C7A46A" stroke-width="0.75"/>
-          <!-- rising lines from center circle -->
-          <line x1="90" y1="1" x2="90" y2="5" stroke="#C7A46A" stroke-width="0.75"/>
-          <line x1="83" y1="3" x2="85.5" y2="6.5" stroke="#C7A46A" stroke-width="0.75"/>
-          <line x1="97" y1="3" x2="94.5" y2="6.5" stroke="#C7A46A" stroke-width="0.75"/>
-          <line x1="104" y1="9" x2="180" y2="9" stroke="#C7A46A" stroke-width="0.75"/>
-        </svg>
-      </div>
-
-      <!-- Body copy -->
-      <p class="ov-hero__body">
-        Four days. One incredible city. The best group of women you'll ever meet.<br/>
-        This is Simi's send-off — and we're doing it right.
-      </p>
-
-      <!-- Allura script accent -->
-      <p class="ov-hero__script">¡salud a ella!</p>
-
-      <!-- CTA button -->
-      <a href="itinerary.html" class="ov-hero__btn btn btn--outline-cream">CAN'T WAIT</a>
-    </div>
-  </section>
-
-  <!-- ===================== FACTS STRIP ===================== -->
-  <section class="ov-facts" id="facts">
-    <div class="ov-facts__inner">
-
-      <div class="ov-fact">
-        <span class="ov-fact__icon" aria-hidden="true">
-          <!-- Calendar icon -->
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="3" y="4" width="18" height="17" rx="2" stroke="currentColor" stroke-width="1.5"/>
-            <line x1="3" y1="9" x2="21" y2="9" stroke="currentColor" stroke-width="1.5"/>
-            <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </span>
-        <span class="ov-fact__label eyebrow">DATES</span>
-        <span class="ov-fact__value">July 30 – Aug 2</span>
-      </div>
-
-      <div class="ov-facts__divider" aria-hidden="true"></div>
-
-      <div class="ov-fact">
-        <span class="ov-fact__icon" aria-hidden="true">
-          <!-- Location pin icon -->
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="1.5"/>
-            <circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
-        </span>
-        <span class="ov-fact__label eyebrow">LOCATION</span>
-        <span class="ov-fact__value">Ciudad de México</span>
-      </div>
-
-      <div class="ov-facts__divider" aria-hidden="true"></div>
-
-      <div class="ov-fact">
-        <span class="ov-fact__icon" aria-hidden="true">
-          <!-- Sparkle / star icon -->
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2 L13.5 9.5 L21 12 L13.5 14.5 L12 22 L10.5 14.5 L3 12 L10.5 9.5 Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        <span class="ov-fact__label eyebrow">VIBES</span>
-        <span class="ov-fact__value">Tropics, culture + a little chaos</span>
-      </div>
-
-      <div class="ov-facts__divider" aria-hidden="true"></div>
-
-      <div class="ov-fact">
-        <span class="ov-fact__icon" aria-hidden="true">
-          <!-- Sun / thermometer icon -->
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5"/>
-            <line x1="12" y1="2"  x2="12" y2="4"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="12" y1="20" x2="12" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="2"  y1="12" x2="4"  y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="20" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="4.9"  y1="4.9"  x2="6.3"  y2="6.3"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="17.7" y1="17.7" x2="19.1" y2="19.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="19.1" y1="4.9"  x2="17.7" y2="6.3"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="6.3"  y1="17.7" x2="4.9"  y2="19.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </span>
-        <span class="ov-fact__label eyebrow">TEMPERATURE</span>
-        <span class="ov-fact__value">Highs of 85°F</span>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ===================== WHY WE'RE GOING ===================== -->
-  <section class="ov-why" id="why">
-    <!-- Texture overlay -->
-    <div class="ov-why__texture" aria-hidden="true"></div>
-
-    <div class="ov-why__inner">
-
-      <!-- Left: arched image (terracotta courtyard placeholder) -->
-      <div class="ov-why__image-wrap">
-        <div class="arch-image-mask">
-          <img
-            src="images/courtyard-placeholder.jpg"
-            alt="Terracotta courtyard in Mexico City"
-            class="arch-image"
-            onerror="this.style.display='none'; this.parentElement.classList.add('arch-image-mask--fallback')"
-          />
-          <!-- Fallback colour block shown when image is missing -->
-          <div class="arch-image__placeholder" aria-hidden="true"></div>
+  <main id="main">
+    <section class="hero hero--short" aria-labelledby="overview-title">
+      <div class="hero__media hero__media--right"><img src="images/hero/courtyard-arch.jpg" alt="Terracotta archway and tropical plants" width="1536" height="864" /></div>
+      <div class="hero__shade" aria-hidden="true"></div>
+      <div class="hero__inner">
+        <div class="hero__copy" data-reveal>
+          <p class="kicker"><span aria-hidden="true">☼</span> The trip</p>
+          <h1 class="display display--sm" id="overview-title">Let’s Celebrate<br>In CDMX</h1>
+          <p class="lede">A long weekend of sunshine, mezcal, good food, dancing, and the kind of memories we’ll still be talking about years from now.</p>
+          <p class="script" lang="es">¡salud a ella!</p>
         </div>
       </div>
+    </section>
 
-      <!-- Right: copy block -->
-      <div class="ov-why__copy">
-        <p class="eyebrow">☀&nbsp;&nbsp;WHY WE'RE GOING</p>
+    <section class="facts facts--4" aria-label="Trip at a glance">
+      <div class="fact"><span class="fact__icon">▣</span><span class="fact__label">Dates</span><span class="fact__value">July 30 – Aug 2</span></div>
+      <div class="fact"><span class="fact__icon">⌖</span><span class="fact__label">Location</span><span class="fact__value">Ciudad de México</span></div>
+      <div class="fact"><span class="fact__icon">♡</span><span class="fact__label">Crew</span><span class="fact__value">Our favorite people</span></div>
+      <div class="fact"><span class="fact__icon">☼</span><span class="fact__label">Temperature</span><span class="fact__value">Warm days, cool nights</span></div>
+    </section>
 
-        <!-- Gold divider -->
-        <div class="gold-rule" aria-hidden="true"></div>
-
-        <h2 class="ov-why__heading">FOR OUR GIRL</h2>
-
-        <p class="ov-why__body">
-          Simi is the kind of person who makes every room feel warmer, every night feel longer,
-          and every memory feel worth keeping. Before she says "I do," we're taking her to
-          one of the most electric cities in the world — because she deserves nothing less.
-        </p>
-
-        <p class="ov-why__body ov-why__body--spaced">
-          Mexico City was made for this. The food, the art, the color, the energy — it's a city
-          that celebrates life at full volume. We'll eat well, drink better, dance until we forget
-          what day it is, and come home with stories we'll be telling for decades.
-        </p>
-
-        <!-- Decorative sunrise ornament SVG -->
-        <div class="ov-why__ornament" aria-hidden="true">
-          <svg width="220" height="40" viewBox="0 0 220 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Horizontal base line -->
-            <line x1="0" y1="30" x2="220" y2="30" stroke="#C7A46A" stroke-width="0.75" opacity="0.6"/>
-            <!-- Center sun -->
-            <circle cx="110" cy="24" r="5" stroke="#C7A46A" stroke-width="0.75" opacity="0.8"/>
-            <!-- Rising rays -->
-            <line x1="110" y1="10" x2="110" y2="19" stroke="#C7A46A" stroke-width="0.75" opacity="0.8" stroke-linecap="round"/>
-            <line x1="101" y1="13" x2="104" y2="18" stroke="#C7A46A" stroke-width="0.75" opacity="0.8" stroke-linecap="round"/>
-            <line x1="119" y1="13" x2="116" y2="18" stroke="#C7A46A" stroke-width="0.75" opacity="0.8" stroke-linecap="round"/>
-            <line x1="96"  y1="20" x2="105" y2="21" stroke="#C7A46A" stroke-width="0.75" opacity="0.8" stroke-linecap="round"/>
-            <line x1="124" y1="20" x2="115" y2="21" stroke="#C7A46A" stroke-width="0.75" opacity="0.8" stroke-linecap="round"/>
-          </svg>
+    <section class="section section--forest texture">
+      <div class="container split">
+        <div class="wide-image" data-reveal><img src="images/hero/casa-pool.jpg" alt="Boutique casa courtyard pool in Mexico City" width="1536" height="864" loading="lazy" /></div>
+        <div data-reveal>
+          <p class="kicker"><span aria-hidden="true">☼</span> Why we’re going</p>
+          <h2 class="section-title">For Our Girl</h2>
+          <div class="ornament" aria-hidden="true"></div>
+          <p class="body-copy">Simi is the heart of every room: the first to say let’s go, the one who brings everyone together, and the reason this whole weekend exists. This is our way of celebrating her before the big day.</p>
+          <p class="body-copy">Mexico City was the only choice: bold food, beautiful spaces, late nights, and enough color around every corner to match the energy she brings to our lives.</p>
         </div>
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <!-- ===================== HER PEOPLE ===================== -->
-  <section class="ov-people" id="her-people">
-
-    <div class="ov-people__inner">
-
-      <!-- Left: text block -->
-      <div class="ov-people__copy">
-        <p class="eyebrow">☀&nbsp;&nbsp;OUR GROUP ENERGY</p>
-
-        <!-- Gold divider -->
-        <div class="gold-rule" aria-hidden="true"></div>
-
-        <h2 class="ov-people__heading">HER PEOPLE</h2>
-
-        <p class="ov-people__body">
-          We've known each other through every chapter — late nights, big moves, hard years,
-          and the best nights of our lives. This crew shows up, shows out, and knows exactly
-          how to celebrate the people they love.
-        </p>
-
-        <p class="ov-people__body ov-people__body--spaced">
-          Expect good conversations over mezcal, spontaneous dance floors, long dinners
-          that turn into something more, and the kind of belly laughs that still hurt
-          the next morning. We're Simi's people — and this weekend is ours too.
-        </p>
+    <section class="section section--cream">
+      <div class="container split">
+        <div data-reveal>
+          <p class="kicker"><span aria-hidden="true">☼</span> Our group energy</p>
+          <h2 class="section-title">Her People</h2>
+          <p class="body-copy">A mix of wild hearts, deep laughs, great taste, and zero responsibility for the weekend. We’re here for long dinners, rooftop toasts, and getting our girl exactly as celebrated as she deserves.</p>
+          <p class="script">Good friends, great moments, unforgettable memories.</p>
+        </div>
+        <div class="image-strip" data-reveal>
+          <div class="arch"><img src="images/hero/casa-pool.jpg" alt="Casa pool courtyard" width="1536" height="864" loading="lazy" /></div>
+          <div class="arch"><img src="images/guide/cocktails.jpg" alt="Cocktails by candlelight" width="1536" height="864" loading="lazy" /></div>
+          <div class="arch"><img src="images/hero/courtyard-arch.jpg" alt="Terracotta archway" width="1536" height="864" loading="lazy" /></div>
+          <div class="arch"><img src="images/guide/tacos.jpg" alt="Tacos and margarita" width="1536" height="864" loading="lazy" /></div>
+          <div class="arch"><img src="images/hero/roma-street.jpg" alt="Roma Norte street" width="1536" height="864" loading="lazy" /></div>
+        </div>
       </div>
+    </section>
 
-      <!-- Right: arched portrait thumbnails + caption -->
-      <div class="ov-people__gallery">
-        <div class="ov-people__thumbs">
-
-          <div class="arch-thumb-wrap">
-            <div class="arch-thumb-mask">
-              <img src="images/portrait-1.jpg" alt="Group photo 1" class="arch-thumb-img"
-                onerror="this.style.display='none'; this.parentElement.classList.add('arch-thumb-mask--fallback')" />
-              <div class="arch-thumb__placeholder" aria-hidden="true"></div>
-            </div>
-          </div>
-
-          <div class="arch-thumb-wrap">
-            <div class="arch-thumb-mask">
-              <img src="images/portrait-2.jpg" alt="Group photo 2" class="arch-thumb-img"
-                onerror="this.style.display='none'; this.parentElement.classList.add('arch-thumb-mask--fallback')" />
-              <div class="arch-thumb__placeholder" aria-hidden="true"></div>
-            </div>
-          </div>
-
-          <div class="arch-thumb-wrap">
-            <div class="arch-thumb-mask">
-              <img src="images/portrait-3.jpg" alt="Group photo 3" class="arch-thumb-img"
-                onerror="this.style.display='none'; this.parentElement.classList.add('arch-thumb-mask--fallback')" />
-              <div class="arch-thumb__placeholder" aria-hidden="true"></div>
-            </div>
-          </div>
-
-          <div class="arch-thumb-wrap">
-            <div class="arch-thumb-mask">
-              <img src="images/portrait-4.jpg" alt="Group photo 4" class="arch-thumb-img"
-                onerror="this.style.display='none'; this.parentElement.classList.add('arch-thumb-mask--fallback')" />
-              <div class="arch-thumb__placeholder" aria-hidden="true"></div>
-            </div>
-          </div>
-
+    <section class="section section--forest texture">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker"><span aria-hidden="true">☼</span> Weekend highlights</p>
+          <h2 class="section-title">What’s Included</h2>
         </div>
-
-        <!-- Allura script caption -->
-        <p class="ov-people__caption script-text">
-          Good friends. great moments. unforgettable memories.
-        </p>
+        <div class="cards">
+          <article class="info-card" data-reveal><div class="card-image"><img src="images/hero/casa-pool.jpg" alt="Casa pool and arches" width="1536" height="864" loading="lazy" /></div><div class="info-card__body"><h3 class="info-card__title">Stay</h3><p class="info-card__text">A beautiful home base for slow mornings, pool time, and getting ready together.</p></div></article>
+          <article class="info-card" data-reveal><div class="card-image"><img src="images/guide/tacos.jpg" alt="Tacos and margarita" width="1536" height="864" loading="lazy" /></div><div class="info-card__body"><h3 class="info-card__title">Eat + Drink</h3><p class="info-card__text">Curated dining, mezcal tastings, rooftop cocktails, and the obvious taco moments.</p></div></article>
+          <article class="info-card" data-reveal><div class="card-image"><img src="images/hero/roma-street.jpg" alt="Roma Norte street" width="1536" height="864" loading="lazy" /></div><div class="info-card__body"><h3 class="info-card__title">Explore</h3><p class="info-card__text">Markets, museums, neighborhood wandering, and a few hidden gems.</p></div></article>
+          <article class="info-card" data-reveal><div class="card-image"><img src="images/guide/cocktails.jpg" alt="Candlelit mezcal cocktails" width="1536" height="864" loading="lazy" /></div><div class="info-card__body"><h3 class="info-card__title">Celebrate</h3><p class="info-card__text">Pool hangs, dancing, surprises, and celebrating our girl from sunrise to last call.</p></div></article>
+        </div>
       </div>
+    </section>
+  </main>
 
-    </div>
-  </section>
-
-  <!-- ===================== WHAT'S INCLUDED ===================== -->
-  <section class="ov-included" id="whats-included">
-    <!-- Texture overlay -->
-    <div class="ov-included__texture" aria-hidden="true"></div>
-
-    <div class="ov-included__inner">
-
-      <!-- Section header -->
-      <div class="ov-included__header">
-        <p class="eyebrow eyebrow--light">☀&nbsp;&nbsp;WEEKEND HIGHLIGHTS</p>
-        <div class="gold-rule" aria-hidden="true"></div>
-        <h2 class="ov-included__heading">WHAT'S INCLUDED</h2>
-      </div>
-
-      <!-- 4-column card grid -->
-      <div class="ov-included__grid">
-
-        <!-- Card: STAY -->
-        <div class="ov-card">
-          <div class="ov-card__image-wrap">
-            <img src="images/stay-placeholder.jpg" alt="Villa in Roma Norte" class="ov-card__image"
-              onerror="this.style.display='none'; this.parentElement.classList.add('ov-card__image-wrap--fallback')" />
-            <div class="ov-card__image-placeholder" aria-hidden="true"></div>
-          </div>
-          <div class="ov-card__body">
-            <!-- Palm icon -->
-            <span class="ov-card__icon" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 36 L20 16" stroke="#C7A46A" stroke-width="1.5" stroke-linecap="round"/>
-                <!-- palm fronds -->
-                <path d="M20 18 C14 14 8 16 6 10 C10 10 16 12 20 18Z" fill="#C7A46A" opacity="0.85"/>
-                <path d="M20 18 C26 14 32 16 34 10 C30 10 24 12 20 18Z" fill="#C7A46A" opacity="0.85"/>
-                <path d="M20 22 C16 14 12 10 8 6 C11 8 17 14 20 22Z" fill="#C7A46A" opacity="0.7"/>
-                <path d="M20 22 C24 14 28 10 32 6 C29 8 23 14 20 22Z" fill="#C7A46A" opacity="0.7"/>
-                <path d="M20 24 C20 18 16 12 20 6 C24 12 20 18 20 24Z" fill="#C7A46A" opacity="0.6"/>
-              </svg>
-            </span>
-            <h3 class="ov-card__title">STAY</h3>
-            <p class="ov-card__desc">A curated villa in the heart of Roma Norte — arched windows, courtyard mornings, and a rooftop that feels made for golden hour.</p>
-          </div>
-        </div>
-
-        <!-- Card: EAT+DRINK -->
-        <div class="ov-card">
-          <div class="ov-card__image-wrap">
-            <img src="images/eat-placeholder.jpg" alt="Curated dining and mezcal" class="ov-card__image"
-              onerror="this.style.display='none'; this.parentElement.classList.add('ov-card__image-wrap--fallback')" />
-            <div class="ov-card__image-placeholder" aria-hidden="true"></div>
-          </div>
-          <div class="ov-card__body">
-            <!-- Cocktail / glass icon -->
-            <span class="ov-card__icon" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 8 L20 22 L20 33" stroke="#C7A46A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M32 8 L20 22" stroke="#C7A46A" stroke-width="1.5" stroke-linecap="round"/>
-                <line x1="6" y1="8" x2="34" y2="8" stroke="#C7A46A" stroke-width="1.5" stroke-linecap="round"/>
-                <line x1="15" y1="33" x2="25" y2="33" stroke="#C7A46A" stroke-width="1.5" stroke-linecap="round"/>
-                <!-- olive pick -->
-                <line x1="26" y1="4" x2="24" y2="12" stroke="#C7A46A" stroke-width="1" stroke-linecap="round"/>
-                <circle cx="25" cy="3.5" r="1.5" fill="#C7A46A"/>
-              </svg>
-            </span>
-            <h3 class="ov-card__title">EAT&nbsp;+&nbsp;DRINK</h3>
-            <p class="ov-card__desc">Curated reservations at CDMX's most beloved spots. Shared plates, smoky mezcal, and a table full of people you love.</p>
-          </div>
-        </div>
-
-        <!-- Card: EXPLORE -->
-        <div class="ov-card">
-          <div class="ov-card__image-wrap">
-            <img src="images/explore-placeholder.jpg" alt="Markets and museums" class="ov-card__image"
-              onerror="this.style.display='none'; this.parentElement.classList.add('ov-card__image-wrap--fallback')" />
-            <div class="ov-card__image-placeholder" aria-hidden="true"></div>
-          </div>
-          <div class="ov-card__body">
-            <!-- Compass icon -->
-            <span class="ov-card__icon" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="20" cy="20" r="14" stroke="#C7A46A" stroke-width="1.5"/>
-                <circle cx="20" cy="20" r="2" fill="#C7A46A"/>
-                <!-- north pointer -->
-                <path d="M20 8 L23 20 L20 18 L17 20 Z" fill="#C7A46A"/>
-                <!-- south pointer -->
-                <path d="M20 32 L17 20 L20 22 L23 20 Z" fill="#C7A46A" opacity="0.45"/>
-                <!-- N/S labels -->
-                <text x="18.5" y="7" fill="#C7A46A" font-size="3.5" font-family="Inter, sans-serif">N</text>
-              </svg>
-            </span>
-            <h3 class="ov-card__title">EXPLORE</h3>
-            <p class="ov-card__desc">Flower markets at dawn, world-class murals, cobblestone streets, and museum corridors. CDMX reveals itself to people who wander.</p>
-          </div>
-        </div>
-
-        <!-- Card: CELEBRATE -->
-        <div class="ov-card">
-          <div class="ov-card__image-wrap">
-            <img src="images/celebrate-placeholder.jpg" alt="Dancing, pool, surprises" class="ov-card__image"
-              onerror="this.style.display='none'; this.parentElement.classList.add('ov-card__image-wrap--fallback')" />
-            <div class="ov-card__image-placeholder" aria-hidden="true"></div>
-          </div>
-          <div class="ov-card__body">
-            <!-- Sun / celebration icon -->
-            <span class="ov-card__icon" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="20" cy="20" r="8" stroke="#C7A46A" stroke-width="1.5"/>
-                <line x1="20" y1="4"  x2="20" y2="9"  stroke="#C7A46A" stroke-width="1.5" stroke-linecap="round"/>
-                <line x1="20" y1="31" x2="20" y2="36" stroke="#C7A46A" stroke-width="1.5" stroke-linecap="round"/>
-                <line x1="4"  y1="20" x2="9"  y2="20" stroke="#C7A46A" stroke-width="1.5" stroke-linecap="round"/>
-                <line x1="31" y1="20" x2="36" y2="20" stroke="#C7A46A" stroke-width="1.5" stroke-linecap="round"/>
-                <line x1="7.8"  y1="7.8"  x2="11.3" y2="11.3" stroke="#C7A46A" stroke-width="1.5" stroke-linecap="round"/>
-                <line x1="28.7" y1="28.7" x2="32.2" y2="32.2" stroke="#C7A46A" stroke-width="1.5" stroke-linecap="round"/>
-                <line x1="32.2" y1="7.8"  x2="28.7" y2="11.3" stroke="#C7A46A" stroke-width="1.5" stroke-linecap="round"/>
-                <line x1="11.3" y1="28.7" x2="7.8"  y2="32.2" stroke="#C7A46A" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-            </span>
-            <h3 class="ov-card__title">CELEBRATE</h3>
-            <p class="ov-card__desc">Dancing until the city sleeps, pool afternoons, rooftop toasts, and a few surprises we've been planning for months.</p>
-          </div>
-        </div>
-
-      </div><!-- /.ov-included__grid -->
-    </div><!-- /.ov-included__inner -->
-  </section>
-
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="site-footer" id="footer">
+  <footer class="site-footer">
     <div class="site-footer__inner">
-      <!-- Gold divider line with centered sun mark -->
-      <div class="site-footer__rule" aria-hidden="true">
-        <svg width="220" height="12" viewBox="0 0 220 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <line x1="0" y1="6" x2="98" y2="6" stroke="#C7A46A" stroke-width="0.75" opacity="0.5"/>
-          <circle cx="110" cy="6" r="3" stroke="#C7A46A" stroke-width="0.75" opacity="0.7"/>
-          <line x1="122" y1="6" x2="220" y2="6" stroke="#C7A46A" stroke-width="0.75" opacity="0.5"/>
-        </svg>
-      </div>
-
-      <p class="site-footer__heading">CAN'T WAIT FOR THE BEST WEEKEND!</p>
-      <p class="site-footer__script">xo, your bach crew ♡</p>
-
-      <nav class="site-footer__nav" aria-label="Footer navigation">
-        <a href="overview.html" class="site-footer__nav-link">Overview</a>
-        <a href="itinerary.html" class="site-footer__nav-link">Itinerary</a>
-        <a href="guide.html" class="site-footer__nav-link">Guide</a>
-        <a href="logistics.html" class="site-footer__nav-link">Logistics</a>
-      </nav>
-
-      <p class="site-footer__legal">CDMX · July 30 – August 2</p>
+      <div class="footer-note"><b>Can’t wait for the best weekend</b><span>xo, your bach crew</span></div>
+      <span aria-hidden="true">☼</span>
+      <nav class="footer-nav" aria-label="Footer navigation"><a href="index.html">Home</a><a href="itinerary.html">Itinerary</a><a href="guide.html">Guide</a><a href="logistics.html">Logistics</a></nav>
     </div>
   </footer>
-
   <script src="js/main.js"></script>
 </body>
 </html>

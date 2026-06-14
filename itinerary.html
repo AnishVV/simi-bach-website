@@ -3,550 +3,93 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Itinerary · Simi's Bachelorette · CDMX</title>
+  <meta name="description" content="Day-by-day CDMX bachelorette itinerary." />
+  <title>Itinerary · Simi's Bachelorette CDMX</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Allura&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/tokens.css" />
-  <link rel="stylesheet" href="css/globals.css" />
-  <link rel="stylesheet" href="css/components.css" />
-  <link rel="stylesheet" href="css/itinerary.css" />
-  <link rel="stylesheet" href="css/responsive.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-
-  <!-- ============================================================
-       NAV
-  ============================================================ -->
-  <nav class="site-nav" aria-label="Main navigation">
-    <a href="index.html" class="nav-logo">
-      <svg class="sun-icon" width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle cx="20" cy="20" r="10" fill="currentColor"/>
-        <!-- rays -->
-        <line x1="20" y1="2"  x2="20" y2="8"  stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="20" y1="32" x2="20" y2="38" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="2"  y1="20" x2="8"  y2="20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="32" y1="20" x2="38" y2="20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="6.86"  y1="6.86"  x2="11.1"  y2="11.1"  stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="28.9"  y1="28.9"  x2="33.14" y2="33.14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="33.14" y1="6.86"  x2="28.9"  y2="11.1"  stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="11.1"  y1="28.9"  x2="6.86"  y2="33.14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-        <!-- face dots -->
-        <circle cx="16.5" cy="18" r="1.5" fill="var(--color-cream)"/>
-        <circle cx="23.5" cy="18" r="1.5" fill="var(--color-cream)"/>
-        <path d="M15.5 23 Q20 26.5 24.5 23" stroke="var(--color-cream)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-      </svg>
-      <span class="nav-logo__text">CDMX ☀</span>
-    </a>
-
-    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-
-    <ul class="nav-links">
-      <li><a href="overview.html">Overview</a></li>
-      <li><a href="itinerary.html" class="nav-link--active">Itinerary</a></li>
-      <li><a href="guide.html">Guide</a></li>
-      <li><a href="logistics.html">Logistics</a></li>
-    </ul>
-  </nav>
-
-
-  <!-- ============================================================
-       HERO
-  ============================================================ -->
-  <header class="itin-hero">
-    <div class="itin-hero__texture" aria-hidden="true"></div>
-    <div class="itin-hero__inner">
-      <p class="eyebrow eyebrow--light">
-        <svg class="eyebrow__sun" width="12" height="12" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="20" cy="20" r="8" fill="currentColor"/>
-          <line x1="20" y1="2"  x2="20" y2="8"  stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="20" y1="32" x2="20" y2="38" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="2"  y1="20" x2="8"  y2="20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="32" y1="20" x2="38" y2="20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="6.86"  y1="6.86"  x2="11.1"  y2="11.1"  stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="28.9"  y1="28.9"  x2="33.14" y2="33.14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="33.14" y1="6.86"  x2="28.9"  y2="11.1"  stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="11.1"  y1="28.9"  x2="6.86"  y2="33.14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-        </svg>
-        The Plan
-      </p>
-
-      <h1 class="itin-hero__headline">Day<br>by Day</h1>
-
-      <div class="gold-divider gold-divider--hero" aria-hidden="true">
-        <span class="gold-divider__line"></span>
-        <svg width="18" height="18" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="20" cy="20" r="8" fill="var(--color-candle-gold)"/>
-          <line x1="20" y1="2"  x2="20" y2="8"  stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="20" y1="32" x2="20" y2="38" stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="2"  y1="20" x2="8"  y2="20" stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="32" y1="20" x2="38" y2="20" stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="6.86"  y1="6.86"  x2="11.1"  y2="11.1"  stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="28.9"  y1="28.9"  x2="33.14" y2="33.14" stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="33.14" y1="6.86"  x2="28.9"  y2="11.1"  stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="11.1"  y1="28.9"  x2="6.86"  y2="33.14" stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-        </svg>
-        <span class="gold-divider__line"></span>
-      </div>
-
-      <p class="itin-hero__body">
-        Four days in the most electric city in Latin America. Markets and mezcal, rooftops and ruins, tacos and toast-worthy moments — here's everything we've planned for our girl.
-      </p>
-
-      <p class="itin-hero__script">¡salud a ella!</p>
-    </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-nav" data-nav>
+    <a class="brand" href="index.html" aria-label="CDMX home"><span class="brand__word">CDMX</span><span aria-hidden="true">☼</span></a>
+    <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle><span></span><span></span><span></span></button>
+    <nav aria-label="Primary navigation">
+      <ul class="nav-links" data-nav-links>
+        <li><a class="nav-link" href="overview.html">Overview</a></li>
+        <li><a class="nav-link" href="itinerary.html" aria-current="page">Itinerary</a></li>
+        <li><a class="nav-link" href="guide.html">Guide</a></li>
+        <li><a class="nav-link" href="logistics.html">Logistics</a></li>
+      </ul>
+    </nav>
   </header>
 
-
-  <!-- ============================================================
-       DAY CARDS SECTION
-  ============================================================ -->
-  <section class="itin-days" aria-label="Trip itinerary by day">
-    <div class="itin-days__inner">
-
-      <!-- ─── DAY 1 ─── -->
-      <article class="day-card" aria-label="Day 1">
-        <div class="day-card__rail" aria-hidden="true">
-          <span class="day-card__rail-label">DAY</span>
-          <span class="day-card__rail-numeral">1</span>
-          <svg class="day-card__rail-sun" width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="20" cy="20" r="8" fill="var(--color-forest)"/>
-            <line x1="20" y1="3"  x2="20" y2="9"  stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="20" y1="31" x2="20" y2="37" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="3"  y1="20" x2="9"  y2="20" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="31" y1="20" x2="37" y2="20" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="7.64"  y1="7.64"  x2="11.88" y2="11.88" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="28.12" y1="28.12" x2="32.36" y2="32.36" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="32.36" y1="7.64"  x2="28.12" y2="11.88" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="11.88" y1="28.12" x2="7.64"  y2="32.36" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="17" cy="18.5" r="1.4" fill="var(--color-cream)"/>
-            <circle cx="23" cy="18.5" r="1.4" fill="var(--color-cream)"/>
-            <path d="M16 23 Q20 26 24 23" stroke="var(--color-cream)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-          </svg>
+  <main id="main">
+    <section class="hero hero--short" aria-labelledby="itinerary-title">
+      <div class="hero__media hero__media--right"><img src="images/hero/courtyard-arch.jpg" alt="Terracotta courtyard archway in Mexico City" width="1536" height="864" /></div>
+      <div class="hero__shade" aria-hidden="true"></div>
+      <div class="hero__inner">
+        <div class="hero__copy" data-reveal>
+          <p class="kicker"><span aria-hidden="true">☼</span> The plan</p>
+          <h1 class="display display--sm" id="itinerary-title">Day By Day</h1>
+          <div class="ornament" aria-hidden="true"></div>
+          <p class="lede">Five days of sunshine, mezcal, and memories in the heart of Mexico City. Here’s what we have in store for our girl.</p>
+          <p class="script" lang="es">¡salud a ella!</p>
         </div>
-
-        <div class="day-card__image-wrap">
-          <div class="day-card__arch">
-            <img
-              src="images/day1-arrival.jpg"
-              alt="Roma Norte rooftop terrace at sunset with city views"
-              class="day-card__img"
-              loading="lazy"
-            />
-            <div class="day-card__img-placeholder" aria-hidden="true">
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="24" cy="24" r="22" stroke="var(--color-sand)" stroke-width="1.5"/>
-                <path d="M14 34 L20 24 L26 30 L30 25 L36 34Z" fill="var(--color-sand)" opacity="0.4"/>
-                <circle cx="18" cy="18" r="4" fill="var(--color-sand)" opacity="0.4"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        <div class="day-card__content">
-          <p class="eyebrow eyebrow--dark">Wed July 30 · Arrival + Welcome Dinner</p>
-          <h2 class="day-card__title">Bienvenidas!</h2>
-          <p class="day-card__desc">
-            Touch down, check in, and let CDMX wrap you up in its warm chaos. Tonight we gather for the first time as a group — welcome cocktails, a long table dinner, golden hour views, and the first of many toasts to our girl.
-          </p>
-        </div>
-
-        <div class="day-card__facts">
-          <div class="day-card__fact">
-            <svg class="fact-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-              <circle cx="12" cy="9" r="2.5"/>
-            </svg>
-            <span class="fact-label">Where</span>
-            <span class="fact-value">Roma Norte Rooftop</span>
-          </div>
-          <div class="day-card__fact">
-            <svg class="fact-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M12 6v6l4 2"/>
-            </svg>
-            <span class="fact-label">Vibes</span>
-            <span class="fact-value">Warm welcome + good energy</span>
-          </div>
-          <div class="day-card__fact">
-            <svg class="fact-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-            </svg>
-            <span class="fact-label">Includes</span>
-            <span class="fact-value">Welcome dinner + cocktails</span>
-          </div>
-        </div>
-      </article>
-
-
-      <!-- ─── DAY 2 ─── -->
-      <article class="day-card" aria-label="Day 2">
-        <div class="day-card__rail" aria-hidden="true">
-          <span class="day-card__rail-label">DAY</span>
-          <span class="day-card__rail-numeral">2</span>
-          <svg class="day-card__rail-sun" width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="20" cy="20" r="8" fill="var(--color-forest)"/>
-            <line x1="20" y1="3"  x2="20" y2="9"  stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="20" y1="31" x2="20" y2="37" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="3"  y1="20" x2="9"  y2="20" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="31" y1="20" x2="37" y2="20" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="7.64"  y1="7.64"  x2="11.88" y2="11.88" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="28.12" y1="28.12" x2="32.36" y2="32.36" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="32.36" y1="7.64"  x2="28.12" y2="11.88" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="11.88" y1="28.12" x2="7.64"  y2="32.36" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="17" cy="18.5" r="1.4" fill="var(--color-cream)"/>
-            <circle cx="23" cy="18.5" r="1.4" fill="var(--color-cream)"/>
-            <path d="M16 23 Q20 26 24 23" stroke="var(--color-cream)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-          </svg>
-        </div>
-
-        <div class="day-card__image-wrap">
-          <div class="day-card__arch">
-            <img
-              src="images/day2-explore.jpg"
-              alt="Colorful market stalls and baroque architecture in Centro Histórico"
-              class="day-card__img"
-              loading="lazy"
-            />
-            <div class="day-card__img-placeholder" aria-hidden="true">
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="24" cy="24" r="22" stroke="var(--color-sand)" stroke-width="1.5"/>
-                <path d="M14 34 L20 24 L26 30 L30 25 L36 34Z" fill="var(--color-sand)" opacity="0.4"/>
-                <circle cx="18" cy="18" r="4" fill="var(--color-sand)" opacity="0.4"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        <div class="day-card__content">
-          <p class="eyebrow eyebrow--dark">Thu July 31 · Markets, Museums + Wandering</p>
-          <h2 class="day-card__title">Explore</h2>
-          <p class="day-card__desc">
-            CDMX on foot. We wind through the grand plazas of Centro Histórico, duck into markets overflowing with color, and wander Condesa's tree-lined streets at whatever pace feels right. No rush — just the city doing its thing.
-          </p>
-        </div>
-
-        <div class="day-card__facts">
-          <div class="day-card__fact">
-            <svg class="fact-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-              <circle cx="12" cy="9" r="2.5"/>
-            </svg>
-            <span class="fact-label">Where</span>
-            <span class="fact-value">Centro Histórico + Condesa</span>
-          </div>
-          <div class="day-card__fact">
-            <svg class="fact-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M12 6v6l4 2"/>
-            </svg>
-            <span class="fact-label">Vibes</span>
-            <span class="fact-value">Culture, color + curiosity</span>
-          </div>
-          <div class="day-card__fact">
-            <svg class="fact-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-            </svg>
-            <span class="fact-label">Includes</span>
-            <span class="fact-value">Museums, markets + local time</span>
-          </div>
-        </div>
-      </article>
-
-
-      <!-- ─── DAY 3 ─── -->
-      <article class="day-card" aria-label="Day 3">
-        <div class="day-card__rail" aria-hidden="true">
-          <span class="day-card__rail-label">DAY</span>
-          <span class="day-card__rail-numeral">3</span>
-          <svg class="day-card__rail-sun" width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="20" cy="20" r="8" fill="var(--color-forest)"/>
-            <line x1="20" y1="3"  x2="20" y2="9"  stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="20" y1="31" x2="20" y2="37" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="3"  y1="20" x2="9"  y2="20" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="31" y1="20" x2="37" y2="20" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="7.64"  y1="7.64"  x2="11.88" y2="11.88" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="28.12" y1="28.12" x2="32.36" y2="32.36" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="32.36" y1="7.64"  x2="28.12" y2="11.88" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="11.88" y1="28.12" x2="7.64"  y2="32.36" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="17" cy="18.5" r="1.4" fill="var(--color-cream)"/>
-            <circle cx="23" cy="18.5" r="1.4" fill="var(--color-cream)"/>
-            <path d="M16 23 Q20 26 24 23" stroke="var(--color-cream)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-          </svg>
-        </div>
-
-        <div class="day-card__image-wrap">
-          <div class="day-card__arch">
-            <img
-              src="images/day3-eat-drink.jpg"
-              alt="Mezcal glasses and taco spread on a Roma rooftop at night"
-              class="day-card__img"
-              loading="lazy"
-            />
-            <div class="day-card__img-placeholder" aria-hidden="true">
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="24" cy="24" r="22" stroke="var(--color-sand)" stroke-width="1.5"/>
-                <path d="M14 34 L20 24 L26 30 L30 25 L36 34Z" fill="var(--color-sand)" opacity="0.4"/>
-                <circle cx="18" cy="18" r="4" fill="var(--color-sand)" opacity="0.4"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        <div class="day-card__content">
-          <p class="eyebrow eyebrow--dark">Fri Aug 1 · Tacos, Mezcal + Rooftop Night Out</p>
-          <h2 class="day-card__title">Eat + Drink</h2>
-          <p class="day-card__desc">
-            The big night. We eat our way through Roma and Juárez — from the city's best taco counter to a mezcal tasting that'll ruin you for bad spirits forever. Then we move the party up to the rooftop and dance until the skyline tells us to stop.
-          </p>
-        </div>
-
-        <div class="day-card__facts">
-          <div class="day-card__fact">
-            <svg class="fact-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-              <circle cx="12" cy="9" r="2.5"/>
-            </svg>
-            <span class="fact-label">Where</span>
-            <span class="fact-value">Roma + Juárez</span>
-          </div>
-          <div class="day-card__fact">
-            <svg class="fact-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M12 6v6l4 2"/>
-            </svg>
-            <span class="fact-label">Vibes</span>
-            <span class="fact-value">Bold flavors + late nights</span>
-          </div>
-          <div class="day-card__fact">
-            <svg class="fact-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-            </svg>
-            <span class="fact-label">Includes</span>
-            <span class="fact-value">Tacos, mezcal tasting + drinks</span>
-          </div>
-        </div>
-      </article>
-
-
-      <!-- ─── DAY 4 ─── -->
-      <article class="day-card" aria-label="Day 4">
-        <div class="day-card__rail" aria-hidden="true">
-          <span class="day-card__rail-label">DAY</span>
-          <span class="day-card__rail-numeral">4</span>
-          <svg class="day-card__rail-sun" width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="20" cy="20" r="8" fill="var(--color-forest)"/>
-            <line x1="20" y1="3"  x2="20" y2="9"  stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="20" y1="31" x2="20" y2="37" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="3"  y1="20" x2="9"  y2="20" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="31" y1="20" x2="37" y2="20" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="7.64"  y1="7.64"  x2="11.88" y2="11.88" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="28.12" y1="28.12" x2="32.36" y2="32.36" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="32.36" y1="7.64"  x2="28.12" y2="11.88" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="11.88" y1="28.12" x2="7.64"  y2="32.36" stroke="var(--color-forest)" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="17" cy="18.5" r="1.4" fill="var(--color-cream)"/>
-            <circle cx="23" cy="18.5" r="1.4" fill="var(--color-cream)"/>
-            <path d="M16 23 Q20 26 24 23" stroke="var(--color-cream)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-          </svg>
-        </div>
-
-        <div class="day-card__image-wrap">
-          <div class="day-card__arch">
-            <img
-              src="images/day4-farewell.jpg"
-              alt="Sunlit terrace brunch table in Polanco with fresh flowers"
-              class="day-card__img"
-              loading="lazy"
-            />
-            <div class="day-card__img-placeholder" aria-hidden="true">
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="24" cy="24" r="22" stroke="var(--color-sand)" stroke-width="1.5"/>
-                <path d="M14 34 L20 24 L26 30 L30 25 L36 34Z" fill="var(--color-sand)" opacity="0.4"/>
-                <circle cx="18" cy="18" r="4" fill="var(--color-sand)" opacity="0.4"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        <div class="day-card__content">
-          <p class="eyebrow eyebrow--dark">Sat Aug 2 · Brunch, Shopping + Goodbyes</p>
-          <h2 class="day-card__title">Hasta Luego</h2>
-          <p class="day-card__desc">
-            One last morning together. We take it slow over a long brunch, do a final sweep through Polanco's boutiques and Roma's shops for anything we missed, and hug it out until the next time. CDMX, you were everything.
-          </p>
-        </div>
-
-        <div class="day-card__facts">
-          <div class="day-card__fact">
-            <svg class="fact-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-              <circle cx="12" cy="9" r="2.5"/>
-            </svg>
-            <span class="fact-label">Where</span>
-            <span class="fact-value">Polanco + Roma</span>
-          </div>
-          <div class="day-card__fact">
-            <svg class="fact-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M12 6v6l4 2"/>
-            </svg>
-            <span class="fact-label">Vibes</span>
-            <span class="fact-value">Grateful hearts + full bellies</span>
-          </div>
-          <div class="day-card__fact">
-            <svg class="fact-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-            </svg>
-            <span class="fact-label">Includes</span>
-            <span class="fact-value">Brunch + shopping</span>
-          </div>
-        </div>
-      </article>
-
-    </div><!-- /.itin-days__inner -->
-  </section>
-
-
-  <!-- ============================================================
-       CLOSING CTA BAND
-  ============================================================ -->
-  <section class="itin-cta" aria-label="Closing message">
-    <div class="itin-cta__inner">
-      <div class="gold-divider gold-divider--sm" aria-hidden="true">
-        <span class="gold-divider__line"></span>
-        <svg width="14" height="14" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="20" cy="20" r="8" fill="var(--color-candle-gold)"/>
-          <line x1="20" y1="3"  x2="20" y2="9"  stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="20" y1="31" x2="20" y2="37" stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="3"  y1="20" x2="9"  y2="20" stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="31" y1="20" x2="37" y2="20" stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="7.64"  y1="7.64"  x2="11.88" y2="11.88" stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="28.12" y1="28.12" x2="32.36" y2="32.36" stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="32.36" y1="7.64"  x2="28.12" y2="11.88" stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="11.88" y1="28.12" x2="7.64"  y2="32.36" stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-        </svg>
-        <span class="gold-divider__line"></span>
       </div>
+    </section>
 
-      <h2 class="itin-cta__headline">
-        Good company.<br>Great plans.<br>Unforgettable memories.
-      </h2>
+    <section class="section section--terracotta texture">
+      <div class="container timeline">
+        <article class="day-card" data-reveal>
+          <div class="day-card__rail"><span>Day</span><span class="day-card__num">1</span></div>
+          <div class="day-card__image"><div class="arch"><img src="images/hero/courtyard-arch.jpg" alt="Arrival courtyard archway" width="1536" height="864" loading="lazy" /></div></div>
+          <div class="day-card__body"><p class="kicker">Arrival + welcome dinner</p><h2>Bienvenidas</h2><p>Arrive, settle in, and soak up the vibes. We’ll toast to the weekend with rooftop drinks and a delicious welcome dinner at a local favorite.</p></div>
+          <div class="day-card__facts"><div class="day-fact"><span>Where</span><span>Roma Norte rooftop</span></div><div class="day-fact"><span>Vibes</span><span>Warm welcome</span></div><div class="day-fact"><span>Includes</span><span>Dinner + cocktails</span></div></div>
+        </article>
 
-      <p class="itin-cta__script">can't wait for the best weekend!</p>
+        <article class="day-card" data-reveal>
+          <div class="day-card__rail"><span>Day</span><span class="day-card__num">2</span></div>
+          <div class="day-card__image"><div class="arch"><img src="images/hero/roma-street.jpg" alt="Tree-lined Roma Norte street" width="1536" height="864" loading="lazy" /></div></div>
+          <div class="day-card__body"><p class="kicker">Markets, museums, wandering</p><h2>Explore</h2><p>Dive into the culture with colorful markets, iconic museums, and charming streets made for getting beautifully lost.</p></div>
+          <div class="day-card__facts"><div class="day-fact"><span>Where</span><span>Centro + Condesa</span></div><div class="day-fact"><span>Vibes</span><span>Culture + curiosity</span></div><div class="day-fact"><span>Includes</span><span>Museums + markets</span></div></div>
+        </article>
 
-      <a href="logistics.html" class="btn btn--outline-dark">View Trip Details</a>
-    </div>
-  </section>
+        <article class="day-card" data-reveal>
+          <div class="day-card__rail"><span>Day</span><span class="day-card__num">3</span></div>
+          <div class="day-card__image"><div class="arch"><img src="images/guide/tacos.jpg" alt="Tacos and margarita on clay tableware" width="1536" height="864" loading="lazy" /></div></div>
+          <div class="day-card__body"><p class="kicker">Tacos, mezcal tasting, rooftop night</p><h2>Eat + Drink</h2><p>Savor the best bites in the city, sip mezcal like a pro, and dance under the stars at one of CDMX’s best rooftop bars.</p></div>
+          <div class="day-card__facts"><div class="day-fact"><span>Where</span><span>Roma + Juárez</span></div><div class="day-fact"><span>Vibes</span><span>Bold flavors</span></div><div class="day-fact"><span>Includes</span><span>Tacos + drinks</span></div></div>
+        </article>
 
+        <article class="day-card" data-reveal>
+          <div class="day-card__rail"><span>Day</span><span class="day-card__num">4</span></div>
+          <div class="day-card__image"><div class="arch"><img src="images/hero/casa-pool.jpg" alt="Casa courtyard pool" width="1536" height="864" loading="lazy" /></div></div>
+          <div class="day-card__body"><p class="kicker">Spa morning, pool time, sunset cocktails</p><h2>Relax + Play</h2><p>Unwind with a slow morning, a little lounging, and golden hour cocktails with our favorite people.</p></div>
+          <div class="day-card__facts"><div class="day-fact"><span>Where</span><span>La Condesa retreat</span></div><div class="day-fact"><span>Vibes</span><span>Recharged</span></div><div class="day-fact"><span>Includes</span><span>Spa + pool</span></div></div>
+        </article>
 
-  <!-- ============================================================
-       FOOTER
-  ============================================================ -->
-  <footer class="site-footer">
-    <div class="site-footer__texture" aria-hidden="true"></div>
-    <div class="site-footer__inner">
-
-      <!-- Col 1: Brand -->
-      <div class="footer-col footer-col--brand">
-        <a href="index.html" class="footer-logo">
-          <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="20" cy="20" r="10" fill="var(--color-candle-gold)"/>
-            <line x1="20" y1="2"  x2="20" y2="8"  stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="20" y1="32" x2="20" y2="38" stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="2"  y1="20" x2="8"  y2="20" stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="32" y1="20" x2="38" y2="20" stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="6.86"  y1="6.86"  x2="11.1"  y2="11.1"  stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="28.9"  y1="28.9"  x2="33.14" y2="33.14" stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="33.14" y1="6.86"  x2="28.9"  y2="11.1"  stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="11.1"  y1="28.9"  x2="6.86"  y2="33.14" stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-            <circle cx="16.5" cy="18" r="1.5" fill="var(--color-forest)"/>
-            <circle cx="23.5" cy="18" r="1.5" fill="var(--color-forest)"/>
-            <path d="M15.5 23 Q20 26.5 24.5 23" stroke="var(--color-forest)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-          </svg>
-          <div>
-            <span class="footer-logo__title">CDMX ☀</span>
-            <span class="footer-logo__sub">A Bachelorette Getaway</span>
-          </div>
-        </a>
-        <p class="itin-cta__script footer-script">¡salud a ella!</p>
+        <article class="day-card" data-reveal>
+          <div class="day-card__rail"><span>Day</span><span class="day-card__num">5</span></div>
+          <div class="day-card__image"><div class="arch"><img src="images/guide/cocktails.jpg" alt="Candlelit mezcal cocktails" width="1536" height="864" loading="lazy" /></div></div>
+          <div class="day-card__body"><p class="kicker">Brunch, shopping, goodbyes-ish</p><h2>Hasta Luego</h2><p>One last brunch together, a little shopping, and plenty of hugs. Until next time, CDMX.</p></div>
+          <div class="day-card__facts"><div class="day-fact"><span>Where</span><span>Polanco + Roma</span></div><div class="day-fact"><span>Vibes</span><span>Grateful hearts</span></div><div class="day-fact"><span>Includes</span><span>Brunch + shopping</span></div></div>
+        </article>
       </div>
+    </section>
 
-      <!-- Col 2: Explore -->
-      <div class="footer-col">
-        <h3 class="footer-col__heading">Explore</h3>
-        <ul class="footer-nav">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="overview.html">Overview</a></li>
-          <li><a href="itinerary.html">Itinerary</a></li>
-          <li><a href="guide.html">Guide</a></li>
-          <li><a href="logistics.html">Logistics</a></li>
-        </ul>
+    <section class="section section--forest">
+      <div class="container section-head">
+        <p class="kicker"><span aria-hidden="true">☼</span> Good company. Great plans.</p>
+        <h2 class="section-title">Unforgettable Memories</h2>
+        <p class="script">can’t wait for the best weekend</p>
+        <a class="btn" href="logistics.html">View trip details</a>
       </div>
+    </section>
+  </main>
 
-      <!-- Col 3: The Trip -->
-      <div class="footer-col">
-        <h3 class="footer-col__heading">The Trip</h3>
-        <ul class="footer-nav">
-          <li><a href="overview.html#why-were-going">Why We're Going</a></li>
-          <li><a href="overview.html#highlights">Weekend Highlights</a></li>
-          <li><a href="itinerary.html">Day by Day</a></li>
-          <li><a href="guide.html#eat">Eat + Drink</a></li>
-          <li><a href="guide.html#explore">Explore</a></li>
-        </ul>
-      </div>
-
-      <!-- Col 4: Get in Touch -->
-      <div class="footer-col">
-        <h3 class="footer-col__heading">Get in Touch</h3>
-        <p class="footer-contact-body">Questions? We've got you. Reach out and we'll get back to you before you can say "another round?"</p>
-        <ul class="footer-nav footer-contact-list">
-          <li>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-candle-gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            WhatsApp Group Chat
-          </li>
-          <li>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-candle-gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            @simisbachparty
-          </li>
-        </ul>
-      </div>
-
-    </div><!-- /.site-footer__inner -->
-
-    <div class="site-footer__bottom">
-      <div class="gold-divider gold-divider--sm" aria-hidden="true">
-        <span class="gold-divider__line"></span>
-        <svg width="12" height="12" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="20" cy="20" r="8" fill="var(--color-candle-gold)"/>
-          <line x1="20" y1="3"  x2="20" y2="9"  stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="20" y1="31" x2="20" y2="37" stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="3"  y1="20" x2="9"  y2="20" stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="31" y1="20" x2="37" y2="20" stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="7.64"  y1="7.64"  x2="11.88" y2="11.88" stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="28.12" y1="28.12" x2="32.36" y2="32.36" stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="32.36" y1="7.64"  x2="28.12" y2="11.88" stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="11.88" y1="28.12" x2="7.64"  y2="32.36" stroke="var(--color-candle-gold)" stroke-width="2.5" stroke-linecap="round"/>
-        </svg>
-        <span class="gold-divider__line"></span>
-      </div>
-      <p class="site-footer__signoff">Can't wait for the best weekend! &nbsp; xo, your bach crew ♡</p>
-    </div>
-  </footer>
-
+  <footer class="site-footer"><div class="site-footer__inner"><div class="footer-note"><b>CDMX bachelorette getaway</b><span>¡salud a ella!</span></div><span aria-hidden="true">☼</span><nav class="footer-nav" aria-label="Footer navigation"><a href="index.html">Home</a><a href="overview.html">Overview</a><a href="guide.html">Guide</a><a href="logistics.html">Logistics</a></nav></div></footer>
   <script src="js/main.js"></script>
-  <script>
-    // Nav hamburger toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks  = document.querySelector('.nav-links');
-    if (navToggle && navLinks) {
-      navToggle.addEventListener('click', () => {
-        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-        navToggle.setAttribute('aria-expanded', String(!expanded));
-        navLinks.classList.toggle('nav-links--open');
-      });
-    }
-  </script>
 </body>
 </html>
