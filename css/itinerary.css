@@ -1,0 +1,835 @@
+/* ============================================================
+   ITINERARY PAGE — itinerary.html
+   Depends on: tokens.css · globals.css · components.css
+============================================================ */
+
+
+/* ── Missing button variant (cream bg → dark outline) ─────── */
+/* Placed here so it's available sitewide via this file until
+   it's promoted to components.css. */
+.btn--outline-dark {
+  border: 1px solid var(--color-forest);
+  color: var(--color-forest);
+  background-color: transparent;
+}
+
+.btn--outline-dark:hover,
+.btn--outline-dark:focus-visible {
+  background-color: var(--color-forest);
+  color: var(--color-cream);
+}
+
+
+/* ============================================================
+   NAV OVERRIDE — itinerary has a terracotta hero, not forest
+============================================================ */
+
+/* The nav is absolute-positioned over the hero. On this page
+   the hero background is dark terracotta so cream text still
+   works — no override needed. Active link gets gold underline
+   via components.css .nav-link[aria-current], but we're using
+   a custom class here to avoid touching shared HTML. */
+
+.site-nav .nav-links a {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-nav);
+  text-transform: uppercase;
+  color: var(--color-cream);
+  position: relative;
+  padding-bottom: 2px;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.site-nav .nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: var(--color-candle-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.site-nav .nav-links a:hover          { color: var(--color-candle-gold); }
+.site-nav .nav-links a:hover::after   { transform: scaleX(1); }
+.site-nav .nav-links a.nav-link--active {
+  color: var(--color-candle-gold);
+}
+.site-nav .nav-links a.nav-link--active::after {
+  transform: scaleX(1);
+}
+
+/* Hamburger toggle */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: var(--space-2);
+  color: var(--color-cream);
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: calc(var(--z-nav) + 1);
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background-color: currentColor;
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    opacity var(--duration-base) var(--ease-out);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+@media (max-width: 767px) {
+  .nav-toggle { display: flex; }
+
+  .nav-links {
+    position: fixed;
+    inset: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-10);
+    background-color: var(--color-forest);
+    transform: translateX(100%);
+    transition: transform var(--duration-slow) var(--ease-out);
+    z-index: var(--z-nav);
+  }
+
+  .nav-links.nav-links--open {
+    transform: translateX(0);
+  }
+
+  .site-nav .nav-links a {
+    font-size: var(--text-xl);
+    letter-spacing: 0.1em;
+  }
+}
+
+
+/* ============================================================
+   EYEBROW VARIANTS
+============================================================ */
+
+.eyebrow--light {
+  color: var(--color-sand);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.eyebrow__sun {
+  flex-shrink: 0;
+  color: var(--color-candle-gold);
+}
+
+.eyebrow--dark {
+  color: var(--color-terracotta);
+  margin-bottom: var(--space-3);
+}
+
+
+/* ============================================================
+   HERO
+============================================================ */
+
+.itin-hero {
+  position: relative;
+  background-color: var(--color-terracotta-deep);
+  /* Gradient: deep terracotta left → slightly lighter right */
+  background-image: linear-gradient(
+    120deg,
+    var(--color-terracotta-deep) 0%,
+    var(--color-terracotta) 100%
+  );
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-block: clamp(6rem, 14vw, 10rem);
+  padding-inline: var(--gutter);
+  overflow: hidden;
+}
+
+/* Grain texture */
+.itin-hero__texture {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  opacity: 0.055;
+  mix-blend-mode: multiply;
+  z-index: 0;
+}
+
+.itin-hero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-6);
+}
+
+.itin-hero__headline {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 300;
+  letter-spacing: var(--tracking-display);
+  line-height: var(--leading-display);
+  text-transform: uppercase;
+  color: var(--color-cream);
+}
+
+/* Gold divider in hero */
+.gold-divider--hero {
+  width: min(320px, 80%);
+  margin-block: 0;
+}
+
+.itin-hero__body {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--color-sand);
+  max-width: var(--max-width-text);
+}
+
+.itin-hero__script {
+  font-family: var(--font-script);
+  font-size: var(--text-script-lg);
+  color: var(--color-candle-gold);
+  line-height: 1.2;
+}
+
+
+/* ============================================================
+   DAY CARDS SECTION
+============================================================ */
+
+.itin-days {
+  background-color: var(--color-terracotta);
+  padding-block: clamp(var(--space-12), 6vw, var(--space-24));
+  padding-inline: var(--gutter);
+  position: relative;
+}
+
+/* Subtle grain on the terracotta band */
+.itin-days::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  opacity: 0.045;
+  mix-blend-mode: multiply;
+  z-index: 0;
+}
+
+.itin-days__inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(var(--space-8), 3vw, var(--space-12));
+}
+
+
+/* ── Day card shell ──────────────────────────────────────── */
+
+.day-card {
+  background-color: var(--color-cream);
+  border-radius: 18px;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+
+  /* Desktop: [rail] [image] [content] [facts]
+     4-column grid with defined tracks */
+  display: grid;
+  grid-template-columns: 80px 200px 1fr auto;
+  grid-template-rows: 1fr;
+  grid-template-areas: "rail image content facts";
+  align-items: stretch;
+
+  transition: box-shadow var(--duration-base) var(--ease-out);
+}
+
+.day-card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+
+/* ── Left rail ────────────────────────────────────────────── */
+
+.day-card__rail {
+  grid-area: rail;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding-block: var(--space-10);
+  padding-inline: var(--space-4);
+  background-color: var(--color-sand);
+  border-right: 1px solid rgba(168, 97, 75, 0.15);
+}
+
+.day-card__rail-label {
+  font-family: var(--font-body);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-terracotta);
+  line-height: 1;
+}
+
+.day-card__rail-numeral {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 5vw, 5rem);
+  font-weight: 300;
+  line-height: 0.85;
+  letter-spacing: -0.01em;
+  color: var(--color-forest);
+}
+
+.day-card__rail-sun {
+  margin-top: var(--space-2);
+  flex-shrink: 0;
+}
+
+
+/* ── Arched image ─────────────────────────────────────────── */
+
+.day-card__image-wrap {
+  grid-area: image;
+  padding: var(--space-6) var(--space-4);
+  display: flex;
+  align-items: center;
+}
+
+/* The arch container: pill-top, 4:5 aspect */
+.day-card__arch {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-arch);
+  overflow: hidden;
+  position: relative;
+  background-color: var(--color-sand);
+  flex-shrink: 0;
+}
+
+.day-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.day-card:hover .day-card__img {
+  transform: scale(1.04);
+}
+
+/* Placeholder SVG shown when no real image is present */
+.day-card__img-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-sand);
+  /* Hidden once a real img loads — JS can toggle this */
+}
+
+/* Hide placeholder if sibling img loaded without error */
+.day-card__arch:has(img[src]:not([src=""])) .day-card__img-placeholder {
+  display: none;
+}
+
+
+/* ── Content block ────────────────────────────────────────── */
+
+.day-card__content {
+  grid-area: content;
+  padding: var(--space-10) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-4);
+  border-right: 1px solid var(--color-sand);
+}
+
+.day-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-3xl), 4vw, 3.75rem);
+  font-weight: 400;
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  line-height: var(--leading-tight);
+  color: var(--color-forest);
+}
+
+.day-card__desc {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink);
+  max-width: 52ch;
+}
+
+
+/* ── Facts column ─────────────────────────────────────────── */
+
+.day-card__facts {
+  grid-area: facts;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+  min-width: 200px;
+  max-width: 260px;
+}
+
+.day-card__fact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+  padding: var(--space-6) var(--space-6);
+  border-bottom: 1px solid var(--color-sand);
+}
+
+.day-card__fact:last-child {
+  border-bottom: none;
+}
+
+.fact-icon {
+  flex-shrink: 0;
+  margin-bottom: var(--space-1);
+}
+
+.fact-label {
+  font-family: var(--font-body);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-terracotta);
+  line-height: 1;
+}
+
+.fact-value {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  line-height: var(--leading-snug);
+  color: var(--color-ink);
+}
+
+
+/* ============================================================
+   RESPONSIVE — DAY CARD BREAKPOINTS
+============================================================ */
+
+/* ── Tablet: 768px–1023px ─────────────────────────────────── */
+/* Layout: 2 + 2 stacked rows within each card
+   Row 1: [rail | image]
+   Row 2: [content spanning full width]
+   Row 3: [facts spanning full width, horizontal]          */
+@media (max-width: 1023px) {
+  .day-card {
+    grid-template-columns: 72px 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "rail  image"
+      "content content"
+      "facts   facts";
+  }
+
+  .day-card__rail {
+    padding-block: var(--space-8);
+    border-right: 1px solid rgba(168, 97, 75, 0.15);
+    border-bottom: none;
+  }
+
+  .day-card__image-wrap {
+    padding: var(--space-6);
+  }
+
+  /* Image on tablet: landscape-ish, less tall */
+  .day-card__arch {
+    aspect-ratio: 3 / 2;
+    border-radius: var(--radius-arch);
+  }
+
+  .day-card__content {
+    padding: var(--space-8) var(--space-8);
+    border-right: none;
+    border-bottom: 1px solid var(--color-sand);
+  }
+
+  .day-card__facts {
+    flex-direction: row;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .day-card__fact {
+    flex: 1;
+    border-bottom: none;
+    border-right: 1px solid var(--color-sand);
+    padding: var(--space-6);
+  }
+
+  .day-card__fact:last-child {
+    border-right: none;
+  }
+}
+
+/* ── Mobile: ≤ 599px ──────────────────────────────────────── */
+/* Fully stacked, single column */
+@media (max-width: 599px) {
+  .day-card {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+      "rail"
+      "image"
+      "content"
+      "facts";
+    border-radius: 14px;
+  }
+
+  .day-card__rail {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: var(--space-4) var(--space-5);
+    gap: var(--space-3);
+    border-right: none;
+    border-bottom: 1px solid rgba(168, 97, 75, 0.15);
+  }
+
+  .day-card__rail-numeral {
+    font-size: 2.75rem;
+  }
+
+  .day-card__rail-sun {
+    margin-top: 0;
+  }
+
+  .day-card__image-wrap {
+    padding: 0;
+  }
+
+  /* Mobile image: landscape crop, shorter */
+  .day-card__arch {
+    aspect-ratio: 16 / 9;
+    border-radius: 0;   /* flush within the card */
+  }
+
+  .day-card__content {
+    padding: var(--space-6) var(--space-5);
+    border-right: none;
+    border-bottom: 1px solid var(--color-sand);
+    gap: var(--space-3);
+  }
+
+  .day-card__title {
+    font-size: clamp(2.25rem, 9vw, 3rem);
+  }
+
+  .day-card__facts {
+    flex-direction: column;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .day-card__fact {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-5);
+    border-bottom: 1px solid var(--color-sand);
+    border-right: none;
+  }
+
+  .day-card__fact:last-child {
+    border-bottom: none;
+  }
+
+  .fact-icon {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  /* Stack label + value inline on mobile */
+  .day-card__fact-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+
+
+/* ============================================================
+   CLOSING CTA BAND
+============================================================ */
+
+.itin-cta {
+  background-color: var(--color-cream);
+  padding-block: clamp(var(--space-16), 8vw, var(--space-32));
+  padding-inline: var(--gutter);
+  text-align: center;
+}
+
+.itin-cta__inner {
+  max-width: 760px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.itin-cta__headline {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  font-weight: 400;
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  line-height: var(--leading-tight);
+  color: var(--color-forest);
+}
+
+.itin-cta__script {
+  font-family: var(--font-script);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  color: var(--color-terracotta);
+  line-height: 1.2;
+}
+
+
+/* ============================================================
+   MULTI-COLUMN FOOTER (itinerary-specific layout)
+   Overrides the centered single-column in components.css
+============================================================ */
+
+.site-footer {
+  /* Keep the dark bg from components.css */
+  text-align: left;
+}
+
+.site-footer__inner {
+  /* Override: 4-column grid on desktop */
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  align-items: start;
+  gap: var(--space-12);
+  padding-block-start: var(--space-16);
+  padding-block-end: var(--space-12);
+  text-align: left;
+}
+
+.site-footer__bottom {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  padding-block-end: var(--space-10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.site-footer__signoff {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-sand);
+  text-align: center;
+}
+
+/* Footer columns */
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.footer-col--brand {
+  gap: var(--space-5);
+}
+
+/* Logo */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-cream);
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.footer-logo:hover { opacity: 0.8; }
+
+.footer-logo__title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--color-cream);
+}
+
+.footer-logo__sub {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-sand);
+  margin-top: 4px;
+}
+
+.footer-script {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--color-candle-gold);
+}
+
+/* Footer column heading */
+.footer-col__heading {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-sand);
+  line-height: 1;
+  margin-bottom: var(--space-2);
+}
+
+/* Footer nav list */
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.footer-nav a,
+.footer-nav li {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-sand);
+  transition: color var(--duration-fast) var(--ease-out);
+  line-height: 1.4;
+}
+
+.footer-nav a:hover {
+  color: var(--color-candle-gold);
+}
+
+/* Contact list */
+.footer-contact-body {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-sand);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-2);
+}
+
+.footer-contact-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.footer-contact-list svg {
+  flex-shrink: 0;
+}
+
+
+/* ── Footer responsive ────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .site-footer__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-10);
+  }
+
+  .footer-col--brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 599px) {
+  .site-footer__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    padding-block-start: var(--space-12);
+    padding-block-end: var(--space-8);
+  }
+
+  .footer-col--brand {
+    grid-column: auto;
+  }
+
+  .site-footer {
+    text-align: center;
+  }
+
+  .footer-logo {
+    justify-content: center;
+  }
+
+  .footer-nav {
+    align-items: center;
+  }
+
+  .footer-contact-list li {
+    justify-content: center;
+  }
+}
+
+
+/* ============================================================
+   MOTION PREFERENCES
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .day-card,
+  .day-card__img,
+  .nav-links,
+  .nav-toggle span {
+    transition: none !important;
+  }
+}

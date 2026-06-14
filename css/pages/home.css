@@ -1,0 +1,381 @@
+/* ============================================================
+   HOME PAGE — page-specific styles
+   File: css/pages/home.css
+   Scope: index.html only. Does not redeclare anything from
+   tokens.css, globals.css, or components.css.
+============================================================ */
+
+
+/* ── Hero section ─────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100svh;           /* svh: accounts for mobile browser chrome */
+  min-height: 100vh;            /* fallback */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Full-bleed background image */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-below);
+  background-image: url('/images/hero/terracotta-arch-palms.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  /* Subtle Ken Burns drift on load */
+  animation: hero-drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes hero-drift {
+  from { background-position: center 30%; }
+  to   { background-position: center 38%; }
+}
+
+/* Left-to-right gradient overlay: deep terracotta → forest green */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    100deg,
+    rgba(46, 22, 15, 0.72) 0%,
+    rgba(46, 22, 15, 0.48) 40%,
+    rgba(23, 53, 38, 0.18) 100%
+  );
+}
+
+/* Grain texture */
+.hero__grain {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+}
+
+/* Hero content — left-aligned, above gradient layers */
+.hero__content {
+  position: relative;
+  z-index: 3;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: calc(var(--space-24) + 4rem) var(--gutter) var(--space-32);
+  max-width: calc(var(--max-width) + 2 * var(--gutter));
+  margin-inline: auto;
+  width: 100%;
+}
+
+/* Sun / face icon above eyebrow */
+.hero__sun-icon {
+  color: var(--color-candle-gold);
+  margin-bottom: var(--space-5);
+  flex-shrink: 0;
+}
+
+/* Eyebrow — "A BACHELORETTE GETAWAY" */
+.hero__eyebrow {
+  color: var(--color-candle-gold);
+  margin-bottom: var(--space-5);
+}
+
+/* Main headline */
+.hero__heading {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  line-height: var(--leading-display);
+  color: var(--color-cream);
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--space-8);
+}
+
+/* Each word gets its own line — last word (CDMX) gets gold tint */
+.hero__heading-line {
+  display: block;
+}
+
+.hero__heading-line:last-child {
+  color: var(--color-candle-gold);
+  /* slightly lighter weight for contrast at large scale */
+  font-weight: 300;
+}
+
+/* Sunrise ornament divider */
+.hero__ornament {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+  color: var(--color-candle-gold);
+  width: min(320px, 80vw);
+}
+
+.hero__ornament-line {
+  flex: 1;
+  height: 1px;
+  background-color: var(--color-candle-gold);
+  opacity: 0.6;
+}
+
+/* Body paragraph */
+.hero__body {
+  font-family: var(--font-body);
+  font-size: clamp(var(--text-base), 1.5vw, var(--text-lg));
+  line-height: var(--leading-relaxed);
+  color: rgba(246, 235, 216, 0.88);   /* cream at 88% for subtle hierarchy */
+  max-width: 480px;
+  margin-bottom: var(--space-6);
+}
+
+/* Allura script accent — "¡salud a ella!" */
+.hero__script {
+  font-family: var(--font-script);
+  font-size: var(--text-script-lg);
+  color: var(--color-dusty-rose);
+  line-height: 1.2;
+  margin-bottom: var(--space-8);
+  /* slight left rotation for personality */
+  transform: rotate(-1.5deg);
+  transform-origin: left center;
+  display: inline-block;
+}
+
+/* CTA button */
+.hero__cta {
+  /* .btn .btn--outline-cream handles base styles */
+  margin-top: var(--space-2);
+}
+
+/* ── Quick facts strip ────────────────────────────────────── */
+.hero__facts {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+  width: 100%;
+  padding: var(--space-6) var(--gutter);
+  background-color: rgba(23, 53, 38, 0.72);     /* forest at 72% */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(199, 164, 106, 0.25);
+}
+
+/* Individual fact cell */
+.hero__fact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) clamp(var(--space-8), 4vw, var(--space-16));
+  text-align: center;
+  flex: 1;
+  min-width: 140px;
+}
+
+.hero__fact-icon {
+  color: var(--color-candle-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__fact-label {
+  /* .eyebrow handles size, tracking, transform */
+  color: var(--color-sand);
+}
+
+.hero__fact-value {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 400;
+  color: var(--color-cream);
+  line-height: var(--leading-tight);
+  letter-spacing: 0.02em;
+}
+
+/* Vertical dividers between facts */
+.hero__fact-divider {
+  width: 1px;
+  height: 52px;
+  background: rgba(199, 164, 106, 0.35);
+  flex-shrink: 0;
+  align-self: center;
+}
+
+
+/* ── Preview cards section ────────────────────────────────── */
+.previews {
+  background-color: var(--color-cream);
+  padding-block: var(--space-20) var(--space-16);
+  position: relative;
+}
+
+.previews__inner {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Centered eyebrow above the cards */
+.previews__eyebrow {
+  text-align: center;
+  color: var(--color-terracotta);
+  margin-bottom: var(--space-12);
+}
+
+/* 5-column card grid */
+.previews__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-5);
+  align-items: end;     /* bottom-align so varied-height cards rest on same baseline */
+}
+
+/*
+  Stagger heights: cards 1,3,5 sit at full height.
+  Cards 2 and 4 use a slightly smaller arch so the row
+  has a gentle zig-zag rhythm — center card tallest.
+*/
+.previews__grid .preview-card:nth-child(2) .preview-card__arch,
+.previews__grid .preview-card:nth-child(4) .preview-card__arch {
+  aspect-ratio: 3 / 4.2;
+}
+
+.previews__grid .preview-card--featured .preview-card__arch {
+  aspect-ratio: 3 / 4.6;
+}
+
+
+/* ── Responsive breakpoints ───────────────────────────────── */
+
+/* Tablet landscape — keep 5 cols but reduce gap */
+@media (max-width: 1024px) {
+  .previews__grid {
+    gap: var(--space-4);
+  }
+}
+
+/* Tablet portrait — 3 columns, hide 4th & 5th or reflow */
+@media (max-width: 900px) {
+  .previews__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5);
+  }
+
+  /* The 4th card (The Guide) spans beneath cards 1–3 */
+  .previews__grid .preview-card:nth-child(4),
+  .previews__grid .preview-card:nth-child(5) {
+    /* Reset arch stagger */
+  }
+}
+
+/* Mobile — 2 columns */
+@media (max-width: 600px) {
+  .hero__content {
+    padding-top: calc(var(--space-16) + 4rem);
+    padding-bottom: var(--space-20);
+  }
+
+  .hero__facts {
+    flex-direction: column;
+    gap: var(--space-5);
+    padding-block: var(--space-8);
+  }
+
+  .hero__fact-divider {
+    display: none;
+  }
+
+  .hero__fact {
+    min-width: unset;
+    width: 100%;
+    padding: 0;
+  }
+
+  .previews {
+    padding-block: var(--space-16) var(--space-12);
+  }
+
+  .previews__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-5);
+  }
+
+  /* 5th card centered on its own row */
+  .previews__grid .preview-card:nth-child(5) {
+    grid-column: 1 / -1;
+    max-width: 55%;
+    margin-inline: auto;
+  }
+
+  /* Reset all arch stagger on mobile — uniform */
+  .previews__grid .preview-card:nth-child(2) .preview-card__arch,
+  .previews__grid .preview-card:nth-child(4) .preview-card__arch,
+  .previews__grid .preview-card--featured .preview-card__arch {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+/* Very small — 1 column */
+@media (max-width: 380px) {
+  .previews__grid {
+    grid-template-columns: 1fr;
+    max-width: 280px;
+    margin-inline: auto;
+  }
+
+  .previews__grid .preview-card:nth-child(5) {
+    grid-column: auto;
+    max-width: unset;
+    margin-inline: 0;
+  }
+}
+
+
+/* ── Hero entrance animations ─────────────────────────────── */
+/* Staggered fade-up for hero content children */
+@media (prefers-reduced-motion: no-preference) {
+  .hero__sun-icon,
+  .hero__eyebrow,
+  .hero__heading,
+  .hero__ornament,
+  .hero__body,
+  .hero__script,
+  .hero__cta {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fade-up var(--duration-slow) var(--ease-out) forwards;
+  }
+
+  .hero__sun-icon   { animation-delay: 100ms; }
+  .hero__eyebrow    { animation-delay: 180ms; }
+  .hero__heading    { animation-delay: 280ms; }
+  .hero__ornament   { animation-delay: 400ms; }
+  .hero__body       { animation-delay: 480ms; }
+  .hero__script     { animation-delay: 560ms; }
+  .hero__cta        { animation-delay: 640ms; }
+}
+
+@keyframes fade-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

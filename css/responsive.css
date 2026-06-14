@@ -1,0 +1,2462 @@
+/*
+ * responsive.css
+ * Mobile & Responsive Strategy — Simi's Bachelorette · CDMX
+ *
+ * Layer order:
+ *   1. CSS Custom Properties (design tokens)
+ *   2. Base reset additions
+ *   3. Mobile-first base styles (375px target, 320px minimum)
+ *   4. @media (min-width: 768px)  — tablet
+ *   5. @media (min-width: 1024px) — desktop
+ *   6. @media (min-width: 1440px) — wide / container cap
+ *
+ * Every section is labelled with the component it governs.
+ * Touch optimizations are inlined at their point of use, not
+ * grouped at the end, so each component is self-contained.
+ */
+
+/* ============================================================
+   DESIGN TOKENS
+   All color, type, and spacing values live here. Pages import
+   this file and never hard-code raw values.
+============================================================ */
+:root {
+  /* Colors */
+  --color-terracotta:      #A8614B;
+  --color-terracotta-deep: #6E3428;
+  --color-forest:          #173526;
+  --color-forest-2:        #244634;
+  --color-sage:            #788863;
+  --color-cream:           #F6EBD8;
+  --color-sand:            #D8C8A6;
+  --color-candle-gold:     #C7A46A;
+  --color-dusty-rose:      #D99084;
+  --color-ink:             #27241D;
+
+  /* Typography families */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-script:  'Allura', cursive;
+
+  /* Fluid type scale — clamp(min, preferred, max) */
+  --text-eyebrow:    0.6875rem;  /* 11px — fixed, never scales */
+  --text-body-sm:    0.875rem;   /* 14px */
+  --text-body:       1rem;       /* 16px */
+  --text-body-lg:    1.125rem;   /* 18px */
+  --text-h3:         clamp(1rem,   2.5vw, 1.5rem);
+  --text-h2:         clamp(1.75rem, 5vw,  3.5rem);
+  --text-h1-hero:    clamp(2.8rem,  9vw,  7rem);
+  --text-script:     clamp(1.8rem,  5vw,  3.2rem);
+
+  /* Letter spacing */
+  --ls-eyebrow: 0.18em;
+  --ls-display: 0.01em;
+
+  /* Line heights */
+  --lh-display: 0.88;
+  --lh-body:    1.65;
+  --lh-loose:   1.8;
+
+  /* Spacing — fluid sections */
+  --space-section: clamp(3rem, 6vw, 8rem);
+  --space-section-sm: clamp(2rem, 4vw, 5rem);
+  --space-gap:    clamp(1rem, 2.5vw, 2rem);
+
+  /* Container */
+  --container-max: 1440px;
+  --container-pad-mobile:  1.25rem;
+  --container-pad-tablet:  2.5rem;
+  --container-pad-desktop: 5rem;
+
+  /* Nav height — used for scroll-padding-top */
+  --nav-height: 64px;
+
+  /* Arch image ratio (4:5) */
+  --arch-ratio: 125%; /* padding-top trick: (5/4)*100 */
+
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-nav: 0.38s var(--ease-out-expo);
+}
+
+
+/* ============================================================
+   BASE RESET ADDITIONS
+============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* Prevent horizontal scroll at 320px minimum */
+  overflow-x: hidden;
+  /* Smooth scroll for in-page anchors */
+  scroll-behavior: smooth;
+  /* Account for fixed nav when jumping to anchors */
+  scroll-padding-top: var(--nav-height);
+  /* Improve text rendering */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--color-ink);
+  background-color: var(--color-cream);
+  overflow-x: hidden;
+  /* Lock scroll when nav overlay is open — toggled via JS */
+}
+
+body.nav-open {
+  overflow: hidden;
+  /* Preserve scroll position while locked */
+  position: fixed;
+  width: 100%;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font: inherit;
+}
+
+/* Touch: remove tap highlight on interactive elements */
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Touch: minimum 44px tap targets */
+.nav-link,
+.nav-hamburger,
+.btn,
+.preview-card {
+  min-height: 44px;
+}
+
+
+/* ============================================================
+   UTILITY CLASSES
+============================================================ */
+
+/* Container — pads sides, caps width, centered */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad-mobile);
+}
+
+/* Eyebrow label — shared across all pages */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* Gold divider line with optional sun mark */
+.gold-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-candle-gold);
+  margin-block: 2rem;
+}
+
+.gold-divider__line {
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.gold-divider--sm {
+  margin-block: 1.25rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: var(--text-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  padding: 0.875rem 2rem;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn--outline-cream {
+  border: 1px solid var(--color-cream);
+  color: var(--color-cream);
+  background: transparent;
+}
+
+.btn--outline-cream:hover,
+.btn--outline-cream:focus-visible {
+  background: var(--color-cream);
+  color: var(--color-ink);
+}
+
+.btn--outline-gold {
+  border: 1px solid var(--color-candle-gold);
+  color: var(--color-candle-gold);
+  background: transparent;
+}
+
+.btn--outline-gold:hover,
+.btn--outline-gold:focus-visible {
+  background: var(--color-candle-gold);
+  color: var(--color-ink);
+}
+
+/* Texture grain overlay — applied as ::before on section wrappers */
+.grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.045;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 1;
+}
+
+
+/* ============================================================
+   SITE NAV — MOBILE BASE
+   Logo left · Hamburger right · Overlay slides down on open
+============================================================ */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: var(--container-pad-mobile);
+  /* Transparent on hero; pages set .site-nav--solid via JS on scroll */
+  background: transparent;
+  transition: background 0.3s ease;
+}
+
+/* Solid background once user scrolls past hero */
+.site-nav--solid {
+  background: var(--color-forest);
+}
+
+/* Logo */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-cream);
+  font-family: var(--font-body);
+  font-size: var(--text-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  z-index: 110; /* above overlay */
+}
+
+.nav-logo__sun {
+  color: var(--color-candle-gold);
+  flex-shrink: 0;
+}
+
+/* Hamburger button — mobile only */
+.nav-hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  color: var(--color-cream);
+  z-index: 110; /* above overlay */
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: currentColor;
+  border-radius: 2px;
+  transform-origin: center;
+  transition:
+    transform 0.3s var(--ease-out-expo),
+    opacity   0.2s ease;
+}
+
+/* Animate hamburger → X when nav is open */
+.nav-open .nav-hamburger span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+.nav-open .nav-hamburger span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.nav-open .nav-hamburger span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* Nav links — hidden on mobile, shown as overlay */
+.nav-links {
+  /*
+   * Mobile: full-screen overlay.
+   * Positioned fixed, slides in from top.
+   * visibility:hidden + pointer-events:none when closed so
+   * it doesn't capture clicks or appear in tab order.
+   */
+  position: fixed;
+  inset: 0;
+  z-index: 105;
+  background: var(--color-forest);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+
+  /* Closed state */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-100%);
+  transition:
+    transform  var(--transition-nav),
+    opacity    0.25s ease,
+    visibility 0s linear 0.38s; /* delay visibility so fade-out completes */
+}
+
+/* Open state — toggled by JS adding .nav-open to body */
+.nav-open .nav-links {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition:
+    transform  var(--transition-nav),
+    opacity    0.25s ease,
+    visibility 0s linear 0s;
+}
+
+.nav-link {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-cream);
+  line-height: 1;
+  /* Each link slides in staggered — set via CSS custom property */
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity    0.3s ease var(--_delay, 0.1s),
+    transform  0.3s var(--ease-out-expo) var(--_delay, 0.1s),
+    color      0.15s ease;
+}
+
+.nav-link:nth-child(1) { --_delay: 0.12s; }
+.nav-link:nth-child(2) { --_delay: 0.18s; }
+.nav-link:nth-child(3) { --_delay: 0.24s; }
+.nav-link:nth-child(4) { --_delay: 0.30s; }
+
+.nav-open .nav-link {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--color-candle-gold);
+}
+
+/* Current page indicator */
+.nav-link[aria-current="page"] {
+  color: var(--color-candle-gold);
+}
+
+
+/* ============================================================
+   HERO — MOBILE BASE (all pages share this structure)
+============================================================ */
+.hero {
+  position: relative;
+  min-height: 85svh; /* svh = small viewport height — avoids mobile browser chrome */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* content near bottom, facts at very bottom */
+  padding-top: var(--nav-height);
+  overflow: hidden;
+  color: var(--color-cream);
+}
+
+/* Full-bleed background image */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 30%; /* show tops of arches / architecture */
+}
+
+/* Gradient overlay — stronger on mobile for legibility */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    rgba(46, 22, 15, 0.88) 0%,
+    rgba(46, 22, 15, 0.60) 50%,
+    rgba(23, 53, 38, 0.25) 100%
+  );
+}
+
+/* Grain texture layer */
+.hero__grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+/* Content block */
+.hero__content {
+  position: relative;
+  z-index: 2;
+  padding: var(--container-pad-mobile);
+  padding-bottom: 2rem;
+  max-width: 100%;
+}
+
+.hero__sun-icon {
+  color: var(--color-candle-gold);
+  margin-bottom: 1.25rem;
+  width: 32px;
+  height: 32px;
+}
+
+.hero__eyebrow {
+  color: var(--color-sand);
+  margin-bottom: 1rem;
+}
+
+/* Main headline */
+.hero__heading {
+  font-family: var(--font-display);
+  font-size: var(--text-h1-hero);
+  font-weight: 400;
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  text-transform: uppercase;
+  color: var(--color-cream);
+  margin-bottom: 1.5rem;
+}
+
+.hero__heading-line {
+  display: block;
+}
+
+/* Ornament divider */
+.hero__ornament {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-candle-gold);
+  margin-bottom: 1.25rem;
+}
+
+.hero__ornament-line {
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+  max-width: 80px; /* cap on mobile so ornament doesn't stretch full width */
+}
+
+.hero__body {
+  font-size: var(--text-body);
+  line-height: var(--lh-loose);
+  color: var(--color-sand);
+  margin-bottom: 1.25rem;
+  max-width: 48ch;
+}
+
+.hero__script {
+  font-family: var(--font-script);
+  font-size: var(--text-script);
+  color: var(--color-candle-gold);
+  margin-bottom: 1.75rem;
+  line-height: 1.2;
+}
+
+/* CTA button — full-width on mobile */
+.hero__cta {
+  width: 100%;
+  max-width: 320px; /* cap so it doesn't span 375px entirely */
+}
+
+/* Quick facts strip — anchored to bottom */
+.hero__facts {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  /* 2-column grid on mobile (3 facts → first two share row, third below) */
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid rgba(198, 164, 106, 0.3);
+  background: rgba(23, 53, 38, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.hero__fact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem var(--container-pad-mobile);
+  gap: 0.35rem;
+}
+
+/* Third fact spans full width on mobile */
+.hero__fact:last-child {
+  grid-column: 1 / -1;
+  border-top: 1px solid rgba(198, 164, 106, 0.2);
+}
+
+/* Dividers between facts — hidden on mobile, shown on tablet+ */
+.hero__fact-divider {
+  display: none;
+}
+
+.hero__fact-icon {
+  color: var(--color-candle-gold);
+  display: flex;
+  align-items: center;
+}
+
+.hero__fact-label {
+  color: var(--color-sand);
+  opacity: 0.7;
+}
+
+.hero__fact-value {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+  font-weight: 400;
+  color: var(--color-cream);
+}
+
+
+/* ============================================================
+   SECTION PREVIEW CARDS — HOME PAGE
+   Desktop: 5 columns
+   Tablet:  3 columns (last 2 in second row, centered)
+   Mobile:  2 columns (last card centered, full-width optional)
+============================================================ */
+.previews {
+  background: var(--color-cream);
+  padding-block: var(--space-section);
+}
+
+.previews__inner {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad-mobile);
+}
+
+.previews__eyebrow {
+  color: var(--color-sage);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Grid — mobile: 2 columns */
+.previews__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+  list-style: none; /* role=list so this is safe */
+}
+
+/* Last card (5th) spans full width on mobile so it's centered */
+.preview-card:last-child {
+  grid-column: 1 / -1;
+  max-width: calc(50% - 0.4rem); /* keep it card-width, centered */
+  margin-inline: auto;
+}
+
+/* Arch image wrapper */
+.preview-card__arch-wrap {
+  margin-bottom: 0.75rem;
+}
+
+.preview-card__arch {
+  position: relative;
+  width: 100%;
+  /* 4:5 aspect ratio via padding-top trick */
+  padding-top: var(--arch-ratio);
+  overflow: hidden;
+  border-radius: 999px 999px 0 0;
+  background: var(--color-sand); /* placeholder while image loads */
+}
+
+.preview-card__arch img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Smooth image zoom on hover — touch-safe (no flicker) */
+  transition: transform 0.5s var(--ease-out-expo);
+  will-change: transform;
+}
+
+.preview-card:hover .preview-card__arch img,
+.preview-card:focus-visible .preview-card__arch img {
+  transform: scale(1.04);
+}
+
+.preview-card__label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-inline: 0.25rem;
+}
+
+.preview-card__eyebrow {
+  color: var(--color-sage);
+}
+
+.preview-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 3vw, 1.35rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  line-height: 1.1;
+}
+
+.preview-card--featured .preview-card__title {
+  color: var(--color-terracotta);
+}
+
+
+/* ============================================================
+   SITE FOOTER — MOBILE BASE
+============================================================ */
+.site-footer {
+  background: var(--color-forest);
+  color: var(--color-cream);
+  padding-block: var(--space-section-sm);
+  text-align: center;
+}
+
+.site-footer__inner {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad-mobile);
+}
+
+.site-footer__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 5vw, 2.2rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: var(--lh-display);
+  margin-bottom: 0.75rem;
+}
+
+.site-footer__script {
+  font-family: var(--font-script);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: var(--color-candle-gold);
+  margin-bottom: 1.5rem;
+}
+
+.site-footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.site-footer__nav-link {
+  font-size: var(--text-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-sand);
+  transition: color 0.15s ease;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.site-footer__nav-link:hover {
+  color: var(--color-candle-gold);
+}
+
+.site-footer__legal {
+  font-size: var(--text-body-sm);
+  color: var(--color-sage);
+  opacity: 0.7;
+}
+
+
+/* ============================================================
+   OVERVIEW PAGE — FACTS STRIP
+   Mobile: 2-column grid
+   Desktop: 4-column inline row with dividers
+============================================================ */
+.overview-facts {
+  background: var(--color-cream);
+  padding-block: var(--space-section-sm);
+  border-top: 1px solid var(--color-sand);
+}
+
+.overview-facts__inner {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad-mobile);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem 1rem;
+}
+
+.overview-fact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.overview-fact__label {
+  color: var(--color-sage);
+}
+
+.overview-fact__value {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.8vw, 1.4rem);
+  font-weight: 400;
+  color: var(--color-ink);
+  line-height: 1.2;
+}
+
+/* Vertical dividers between facts — desktop only */
+.overview-fact-divider {
+  display: none;
+}
+
+
+/* ============================================================
+   OVERVIEW — WHY WE'RE GOING (forest green, image + text)
+   Mobile: stacked — image above, text below
+   Desktop: image left 45%, text right 55%
+============================================================ */
+.why-section {
+  background: var(--color-forest);
+  color: var(--color-cream);
+  padding-block: var(--space-section);
+}
+
+.why-section__inner {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad-mobile);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+.why-section__image {
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.why-section__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.why-section__eyebrow {
+  color: var(--color-candle-gold);
+  margin-bottom: 1rem;
+}
+
+.why-section__heading {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 400;
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.why-section__body {
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  color: var(--color-sand);
+  max-width: 52ch;
+}
+
+
+/* ============================================================
+   OVERVIEW — GROUP ENERGY (cream, portrait thumbnails)
+============================================================ */
+.group-section {
+  background: var(--color-cream);
+  padding-block: var(--space-section);
+}
+
+.group-section__inner {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad-mobile);
+}
+
+.group-section__header {
+  margin-bottom: 2.5rem;
+}
+
+.group-section__eyebrow {
+  color: var(--color-sage);
+  margin-bottom: 0.75rem;
+}
+
+.group-section__heading {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 400;
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  text-transform: uppercase;
+  color: var(--color-terracotta-deep);
+  margin-bottom: 1rem;
+}
+
+.group-section__body {
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  max-width: 52ch;
+}
+
+/* Portrait thumbnails — horizontal scroll on mobile */
+.group-portraits {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* hide scrollbar Firefox */
+  padding-bottom: 1rem;
+  /* Snap to each portrait */
+  scroll-snap-type: x mandatory;
+}
+
+.group-portraits::-webkit-scrollbar {
+  display: none;
+}
+
+.group-portrait {
+  flex: 0 0 120px;
+  scroll-snap-align: start;
+}
+
+.group-portrait__arch {
+  width: 120px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 999px 999px 0 0;
+  background: var(--color-sand);
+}
+
+.group-portrait__arch img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.group-portrait__name {
+  font-family: var(--font-script);
+  font-size: 1.1rem;
+  color: var(--color-sage);
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+
+/* ============================================================
+   OVERVIEW — WEEKEND HIGHLIGHTS (4-column card grid)
+   Mobile: 1 column stacked
+   Tablet: 2x2 grid
+   Desktop: 4 columns
+============================================================ */
+.highlights-section {
+  background: var(--color-forest);
+  color: var(--color-cream);
+  padding-block: var(--space-section);
+}
+
+.highlights-section__inner {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad-mobile);
+}
+
+.highlights-section__eyebrow {
+  color: var(--color-candle-gold);
+  margin-bottom: 0.75rem;
+}
+
+.highlights-section__heading {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 400;
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.highlight-card {
+  background: var(--color-forest-2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.highlight-card__image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.highlight-card__body {
+  padding: 1.25rem;
+}
+
+.highlight-card__icon {
+  color: var(--color-candle-gold);
+  margin-bottom: 0.6rem;
+}
+
+.highlight-card__title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.highlight-card__desc {
+  font-size: var(--text-body-sm);
+  line-height: var(--lh-body);
+  color: var(--color-sand);
+}
+
+
+/* ============================================================
+   DAY CARDS — ITINERARY PAGE
+   Mobile:  single column. Image full-width (arched). Content below. Facts as 3 inline columns.
+   Tablet:  2 columns — image left, content+facts right
+   Desktop: 4-column grid — 80px rail | 200px image | 1fr content | 280px facts
+============================================================ */
+.itinerary-section {
+  background: var(--color-terracotta);
+  padding-block: var(--space-section);
+  padding-inline: var(--container-pad-mobile);
+}
+
+.day-card {
+  background: var(--color-cream);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(39, 36, 29, 0.15);
+  margin-bottom: 2rem;
+}
+
+/* Mobile: single column, flex column */
+.day-card__inner {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Left rail — day number */
+.day-card__rail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.25rem 0;
+}
+
+.day-card__rail-label {
+  font-size: var(--text-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-sage);
+}
+
+.day-card__rail-numeral {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 10vw, 5rem);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--color-terracotta);
+}
+
+.day-card__rail-sun {
+  color: var(--color-candle-gold);
+}
+
+/* Arch image — full width on mobile */
+.day-card__arch-wrap {
+  padding: 1rem 1.25rem;
+}
+
+.day-card__arch {
+  position: relative;
+  width: 100%;
+  padding-top: var(--arch-ratio); /* 4:5 ratio */
+  overflow: hidden;
+  border-radius: 999px 999px 0 0;
+  background: var(--color-sand);
+}
+
+.day-card__arch img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Content area */
+.day-card__content {
+  padding: 0 1.25rem 1.5rem;
+}
+
+.day-card__subtitle {
+  font-size: var(--text-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-sage);
+  margin-bottom: 0.5rem;
+}
+
+.day-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 5vw, 2.5rem);
+  font-weight: 400;
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  text-transform: uppercase;
+  color: var(--color-terracotta-deep);
+  margin-bottom: 1rem;
+}
+
+.day-card__desc {
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  color: var(--color-ink);
+  max-width: 60ch;
+}
+
+/* Facts row — 3 equal columns, always inline */
+.day-card__facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--color-sand);
+  margin-top: 1.25rem;
+}
+
+.day-card__fact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem 0.75rem;
+  border-right: 1px solid var(--color-sand);
+}
+
+.day-card__fact:last-child {
+  border-right: none;
+}
+
+.day-card__fact-icon {
+  color: var(--color-candle-gold);
+  margin-bottom: 0.25rem;
+}
+
+.day-card__fact-label {
+  font-size: var(--text-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-sage);
+}
+
+.day-card__fact-value {
+  font-size: var(--text-body-sm);
+  color: var(--color-ink);
+  line-height: 1.4;
+}
+
+/* Itinerary closing quote band */
+.itinerary-quote {
+  background: var(--color-terracotta-deep);
+  color: var(--color-cream);
+  text-align: center;
+  padding-block: var(--space-section-sm);
+  padding-inline: var(--container-pad-mobile);
+}
+
+.itinerary-quote__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.itinerary-quote__script {
+  font-family: var(--font-script);
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  color: var(--color-candle-gold);
+  margin-bottom: 1.5rem;
+}
+
+/* CTA in itinerary quote — full-width on mobile */
+.itinerary-quote .btn {
+  width: 100%;
+  max-width: 280px;
+}
+
+
+/* ============================================================
+   GUIDE PAGE — CATEGORY GRID
+   Desktop: 4 equal columns
+   Tablet:  2x2 grid
+   Mobile:  single column — category label is accordion trigger
+============================================================ */
+.guide-categories {
+  background: var(--color-cream);
+  padding-block: var(--space-section);
+  padding-inline: var(--container-pad-mobile);
+}
+
+.guide-categories__inner {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+}
+
+.guide-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+
+/* Accordion — category card on mobile */
+.guide-category {
+  border: 1px solid var(--color-sand);
+  border-radius: 4px;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* The accordion trigger is a button wrapping the header content */
+.guide-category__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  color: var(--color-ink);
+  /* Touch target */
+  min-height: 56px;
+}
+
+.guide-category__trigger-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.guide-category__icon {
+  color: var(--color-candle-gold);
+  flex-shrink: 0;
+}
+
+.guide-category__label {
+  font-size: var(--text-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-terracotta);
+}
+
+/* Chevron icon rotates when open */
+.guide-category__chevron {
+  color: var(--color-sage);
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.guide-category[data-open="true"] .guide-category__chevron {
+  transform: rotate(180deg);
+}
+
+/* Collapsible panel */
+.guide-category__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s var(--ease-out-expo);
+}
+
+.guide-category[data-open="true"] .guide-category__panel {
+  grid-template-rows: 1fr;
+}
+
+.guide-category__panel-inner {
+  overflow: hidden;
+}
+
+.guide-category__arch-wrap {
+  padding: 0 1.25rem;
+}
+
+.guide-category__arch {
+  position: relative;
+  width: 100%;
+  padding-top: 75%; /* 4:3 ratio on mobile — less tall than full 4:5 */
+  overflow: hidden;
+  border-radius: 999px 999px 0 0;
+  background: var(--color-sand);
+  margin-bottom: 1.25rem;
+}
+
+.guide-category__arch img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.guide-category__venues {
+  padding: 0 1.25rem 1.25rem;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.guide-category__venue {
+  font-size: var(--text-body-sm);
+  line-height: var(--lh-body);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-sand);
+  color: var(--color-ink);
+}
+
+.guide-category__venue:last-child {
+  border-bottom: none;
+}
+
+.guide-category__cta {
+  padding: 0 1.25rem 1.25rem;
+}
+
+.guide-category__cta .btn {
+  width: 100%;
+}
+
+
+/* ============================================================
+   GUIDE — SAVED SPOTS / EXPERIENCES / MAP (3-column)
+   Mobile:  single column
+   Tablet:  2 columns (map below)
+   Desktop: 3 columns
+============================================================ */
+.guide-secondary {
+  background: var(--color-forest);
+  color: var(--color-cream);
+  padding-block: var(--space-section);
+  padding-inline: var(--container-pad-mobile);
+}
+
+.guide-secondary__inner {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+.guide-col__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 3.5vw, 1.75rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: var(--lh-display);
+  margin-bottom: 1.5rem;
+  color: var(--color-cream);
+}
+
+/* Saved Spots list item */
+.spot-item {
+  display: flex;
+  gap: 0.875rem;
+  align-items: flex-start;
+  padding-block: 0.875rem;
+  border-bottom: 1px solid rgba(198, 164, 106, 0.2);
+}
+
+.spot-item__thumb {
+  width: 52px;
+  height: 52px;
+  border-radius: 3px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--color-forest-2);
+}
+
+.spot-item__text {
+  flex: 1;
+}
+
+.spot-item__name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--color-cream);
+  margin-bottom: 0.2rem;
+}
+
+.spot-item__desc {
+  font-size: var(--text-body-sm);
+  color: var(--color-sand);
+  line-height: 1.5;
+}
+
+.spot-item__bookmark {
+  color: var(--color-candle-gold);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Must-Book Experiences — arched thumbnails */
+.experience-item {
+  display: flex;
+  gap: 0.875rem;
+  align-items: flex-start;
+  padding-block: 0.875rem;
+  border-bottom: 1px solid rgba(198, 164, 106, 0.2);
+}
+
+.experience-item__arch {
+  width: 52px;
+  height: 65px; /* 4:5 */
+  overflow: hidden;
+  border-radius: 999px 999px 0 0;
+  flex-shrink: 0;
+  background: var(--color-forest-2);
+}
+
+.experience-item__arch img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.experience-item__text {
+  flex: 1;
+}
+
+.experience-item__name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--color-cream);
+  margin-bottom: 0.2rem;
+}
+
+.experience-item__desc {
+  font-size: var(--text-body-sm);
+  color: var(--color-sand);
+  line-height: 1.5;
+}
+
+/* Vibe Map card */
+.vibe-map {
+  background: var(--color-forest-2);
+  border: 1px solid rgba(198, 164, 106, 0.2);
+  border-radius: 6px;
+  overflow: hidden;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+}
+
+.vibe-map__image {
+  flex: 1;
+  background: var(--color-forest-2);
+  position: relative;
+  min-height: 200px;
+}
+
+.vibe-map__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
+
+.vibe-map__pins {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.vibe-map__pin {
+  font-size: var(--text-eyebrow);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-candle-gold);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.vibe-map__pin::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+
+/* ============================================================
+   GUIDE / LOGISTICS — LOCAL TIP BANNER
+   Desktop: image left 40%, text right 60%
+   Mobile:  image top (16:9 landscape crop), text below
+============================================================ */
+.local-tip {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-terracotta);
+  color: var(--color-cream);
+}
+
+.local-tip__image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.local-tip__content {
+  padding: var(--space-section-sm) var(--container-pad-mobile);
+}
+
+.local-tip__eyebrow {
+  color: var(--color-candle-gold);
+  margin-bottom: 0.75rem;
+}
+
+.local-tip__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 5vw, 3rem);
+  font-weight: 400;
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.local-tip__body {
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  color: var(--color-sand);
+  margin-bottom: 1rem;
+  max-width: 52ch;
+}
+
+.local-tip__script {
+  font-family: var(--font-script);
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  color: var(--color-candle-gold);
+}
+
+
+/* ============================================================
+   LOGISTICS PAGE — AT A GLANCE STRIP
+   Mobile: 2-column grid (5th item full-width, centered)
+   Desktop: 5 equal columns, horizontal, with dividers
+============================================================ */
+.logistics-glance {
+  background: var(--color-cream);
+  padding-block: var(--space-section-sm);
+  border-top: 1px solid var(--color-sand);
+}
+
+.logistics-glance__inner {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad-mobile);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem 1rem;
+}
+
+.logistics-fact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.logistics-fact:last-child {
+  grid-column: 1 / -1;
+  max-width: 50%;
+}
+
+.logistics-fact__icon {
+  color: var(--color-candle-gold);
+  margin-bottom: 0.25rem;
+}
+
+.logistics-fact__label {
+  color: var(--color-sage);
+}
+
+.logistics-fact__value {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.8vw, 1.35rem);
+  font-weight: 400;
+  color: var(--color-ink);
+  line-height: 1.2;
+}
+
+.logistics-fact-divider {
+  display: none;
+}
+
+
+/* ============================================================
+   LOGISTICS — CARD GRID (4-col)
+   Desktop: 4 columns
+   Tablet:  2x2
+   Mobile:  single column
+============================================================ */
+.logistics-cards {
+  background: var(--color-forest);
+  color: var(--color-cream);
+  padding-block: var(--space-section);
+  padding-inline: var(--container-pad-mobile);
+}
+
+.logistics-cards__inner {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+}
+
+.logistics-cards__eyebrow {
+  color: var(--color-candle-gold);
+  margin-bottom: 0.75rem;
+}
+
+.logistics-cards__heading {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 400;
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+}
+
+.logistics-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.logistics-card {
+  background: var(--color-forest-2);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.logistics-card__icon {
+  color: var(--color-candle-gold);
+  padding: 1.25rem 1.25rem 0;
+}
+
+.logistics-card__title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.75rem 1.25rem 0;
+  color: var(--color-cream);
+}
+
+.logistics-card__image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  margin-top: 1rem;
+}
+
+.logistics-card__body {
+  padding: 1rem 1.25rem;
+  font-size: var(--text-body-sm);
+  line-height: var(--lh-body);
+  color: var(--color-sand);
+  flex: 1;
+}
+
+.logistics-card__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0 1.25rem 1rem;
+}
+
+.logistics-card__list li {
+  font-size: var(--text-body-sm);
+  color: var(--color-sand);
+  padding-left: 1rem;
+  position: relative;
+}
+
+.logistics-card__list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--color-candle-gold);
+}
+
+.logistics-card__link {
+  font-size: var(--text-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-candle-gold);
+  padding: 0.75rem 1.25rem 1.25rem;
+  display: inline-block;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+
+/* ============================================================
+   LOGISTICS — INFO CARDS (secondary 3-column grid)
+   Mobile:  single column
+   Tablet:  2 columns (skip RSVP)
+   Desktop: 3 columns
+============================================================ */
+.logistics-info {
+  background: var(--color-forest);
+  color: var(--color-cream);
+  padding-block: var(--space-section-sm);
+  padding-inline: var(--container-pad-mobile);
+  border-top: 1px solid rgba(198, 164, 106, 0.15);
+}
+
+.logistics-info__inner {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+
+/* ============================================================
+   LOGISTICS — CONTACT / FOOTER BAND (terracotta)
+============================================================ */
+.logistics-contact {
+  background: var(--color-terracotta);
+  color: var(--color-cream);
+  padding-block: var(--space-section);
+  padding-inline: var(--container-pad-mobile);
+  text-align: center;
+}
+
+.logistics-contact__heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 400;
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.logistics-contact__sub {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3vw, 1.75rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.75rem;
+}
+
+.logistics-contact__script {
+  font-family: var(--font-script);
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  color: var(--color-candle-gold);
+  margin-bottom: 1.5rem;
+}
+
+.logistics-contact__body {
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  color: var(--color-sand);
+  max-width: 48ch;
+  margin-inline: auto;
+  margin-bottom: 2.5rem;
+}
+
+/* Contact columns — stacked on mobile */
+.logistics-contact__channels {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  text-align: left;
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+.contact-channel__label {
+  color: var(--color-candle-gold);
+  margin-bottom: 0.35rem;
+}
+
+.contact-channel__value {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--color-cream);
+}
+
+
+/* ============================================================
+   ────────────────────────────────────────────────────────────
+   TABLET — min-width: 768px
+   ────────────────────────────────────────────────────────────
+============================================================ */
+@media (min-width: 768px) {
+
+  /* Container padding */
+  .container,
+  .previews__inner,
+  .highlights-section__inner,
+  .guide-categories__inner,
+  .guide-secondary__inner,
+  .logistics-cards__inner,
+  .logistics-glance__inner,
+  .itinerary-section,
+  .logistics-cards,
+  .logistics-info,
+  .guide-categories,
+  .guide-secondary,
+  .local-tip__content,
+  .logistics-contact,
+  .why-section__inner,
+  .group-section__inner {
+    padding-inline: var(--container-pad-tablet);
+  }
+
+  /* --- NAV --- */
+  /* On tablet, the full-screen overlay still applies (links are large).
+     Only at desktop do we switch to inline horizontal links. */
+
+  /* --- HERO --- */
+  .hero__overlay {
+    /* Slightly lighter on tablet — more screen, less need for heavy overlay */
+    background: linear-gradient(
+      100deg,
+      rgba(46, 22, 15, 0.82) 0%,
+      rgba(46, 22, 15, 0.50) 50%,
+      rgba(23, 53, 38, 0.18) 100%
+    );
+  }
+
+  .hero__content {
+    padding-inline: var(--container-pad-tablet);
+    max-width: 680px;
+  }
+
+  /* Quick facts strip — 3 items inline with dividers */
+  .hero__facts {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .hero__fact {
+    flex: 1;
+    padding: 1.25rem var(--container-pad-tablet);
+    border-top: none;
+  }
+
+  .hero__fact:last-child {
+    grid-column: auto; /* reset mobile override */
+    border-top: none;
+    flex: 1;
+  }
+
+  .hero__fact-divider {
+    display: block;
+    width: 1px;
+    background: rgba(198, 164, 106, 0.3);
+    align-self: stretch;
+    flex-shrink: 0;
+  }
+
+  /* --- PREVIEW GRID — 3 columns on tablet --- */
+  .previews__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Last card no longer needs special treatment on tablet */
+  .preview-card:last-child {
+    grid-column: auto;
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  /* --- OVERVIEW — FACTS STRIP — 4 columns --- */
+  .overview-facts__inner {
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    align-items: center;
+    gap: 0;
+    padding-block: var(--space-section-sm);
+  }
+
+  .overview-fact {
+    padding: 0 1.5rem;
+  }
+
+  .overview-fact:first-child {
+    padding-left: 0;
+  }
+
+  .overview-fact-divider {
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: var(--color-sand);
+  }
+
+  /* --- OVERVIEW — WHY WE'RE GOING — 2-column --- */
+  .why-section__inner {
+    grid-template-columns: 45fr 55fr;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .why-section__image {
+    aspect-ratio: 3 / 4;
+  }
+
+  /* --- OVERVIEW — HIGHLIGHTS — 2x2 grid --- */
+  .highlights-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* --- DAY CARDS — TABLET: image left, content+facts right --- */
+  .day-card__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "rail  rail"
+      "arch  content"
+      "arch  facts";
+  }
+
+  .day-card__rail {
+    grid-area: rail;
+    padding: 1.5rem 1.5rem 0;
+  }
+
+  .day-card__arch-wrap {
+    grid-area: arch;
+    padding: 1rem 0.75rem 1rem 1.5rem;
+    /* On tablet, image is taller to fill both content rows */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .day-card__arch {
+    /* Remove padding-top trick; use height to fill column */
+    padding-top: 0;
+    flex: 1;
+    min-height: 280px;
+  }
+
+  .day-card__content {
+    grid-area: content;
+    padding: 1rem 1.5rem 0;
+    align-self: start;
+  }
+
+  .day-card__facts {
+    grid-area: facts;
+    margin: 0;
+    border-top: none;
+    border-left: 1px solid var(--color-sand);
+    align-self: end;
+  }
+
+  /* --- GUIDE CATEGORY GRID — 2x2 --- */
+  .guide-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  /* At tablet, categories open as panels (not accordion) — disable accordion */
+  .guide-category {
+    border-radius: 4px;
+  }
+
+  .guide-category__trigger {
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .guide-category__chevron {
+    display: none;
+  }
+
+  .guide-category__panel {
+    grid-template-rows: 1fr;
+  }
+
+  /* --- GUIDE SECONDARY — 2 columns (map below) --- */
+  .guide-secondary__inner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Map spans full width below the two columns */
+  .guide-col--map {
+    grid-column: 1 / -1;
+  }
+
+  /* --- LOCAL TIP BANNER — image left 40%, text right 60% on tablet --- */
+  .local-tip {
+    flex-direction: row;
+    min-height: 420px;
+  }
+
+  .local-tip__image {
+    width: 40%;
+    height: auto;
+    aspect-ratio: auto;
+    object-fit: cover;
+  }
+
+  .local-tip__content {
+    width: 60%;
+    padding: var(--space-section-sm) var(--container-pad-tablet);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* --- LOGISTICS — GLANCE STRIP — more columns --- */
+  .logistics-glance__inner {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .logistics-fact:last-child {
+    grid-column: auto;
+    max-width: none;
+  }
+
+  /* --- LOGISTICS — CARD GRID — 2x2 --- */
+  .logistics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* --- LOGISTICS INFO — 2 columns --- */
+  .logistics-info__inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* --- LOGISTICS CONTACT — channels in a row --- */
+  .logistics-contact__channels {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 640px;
+    text-align: left;
+  }
+
+  /* --- FOOTER NAV — horizontal row --- */
+  .site-footer__nav {
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+}
+
+
+/* ============================================================
+   ────────────────────────────────────────────────────────────
+   DESKTOP — min-width: 1024px
+   ────────────────────────────────────────────────────────────
+============================================================ */
+@media (min-width: 1024px) {
+
+  /* Container padding */
+  .container,
+  .previews__inner,
+  .highlights-section__inner,
+  .guide-categories__inner,
+  .guide-secondary__inner,
+  .logistics-cards__inner,
+  .logistics-glance__inner,
+  .why-section__inner,
+  .group-section__inner {
+    padding-inline: var(--container-pad-desktop);
+  }
+
+  /* --- NAV — switch to horizontal inline links --- */
+
+  /* Hide hamburger */
+  .nav-hamburger {
+    display: none;
+  }
+
+  /* Reset overlay behavior — links are inline on desktop */
+  .nav-links {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2.5rem;
+    background: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: none;
+  }
+
+  .nav-link {
+    font-family: var(--font-body);
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+    color: var(--color-cream);
+    /* Reset mobile animation state */
+    opacity: 1;
+    transform: none;
+    transition: color 0.15s ease;
+    min-height: auto;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus-visible {
+    color: var(--color-candle-gold);
+  }
+
+  /* When body.nav-open somehow fires on desktop, nav-links stay visible */
+  .nav-open .nav-links {
+    transform: none;
+  }
+
+  /* --- HERO --- */
+  .hero {
+    min-height: 90vh;
+  }
+
+  .hero__overlay {
+    background: linear-gradient(
+      110deg,
+      rgba(46, 22, 15, 0.72) 0%,
+      rgba(46, 22, 15, 0.40) 55%,
+      rgba(23, 53, 38, 0.18) 100%
+    );
+  }
+
+  .hero__content {
+    padding-inline: var(--container-pad-desktop);
+    padding-bottom: 3rem;
+    max-width: 840px;
+  }
+
+  .hero__sun-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hero__ornament-line {
+    max-width: 120px;
+  }
+
+  /* Quick facts — full horizontal strip with dividers */
+  .hero__facts {
+    padding-inline: var(--container-pad-desktop);
+  }
+
+  .hero__fact {
+    padding: 1.5rem 2.5rem;
+  }
+
+  /* --- PREVIEW GRID — 5 columns on desktop --- */
+  .previews__grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .preview-card:last-child {
+    grid-column: auto;
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  /* --- OVERVIEW — HIGHLIGHTS — 4 columns --- */
+  .highlights-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* --- DAY CARDS — DESKTOP 4-column grid --- */
+  .day-card__inner {
+    display: grid;
+    /* Left rail | arch image | content | facts */
+    grid-template-columns: 80px 200px 1fr 280px;
+    grid-template-rows: 1fr;
+    grid-template-areas: "rail arch content facts";
+    min-height: 340px;
+  }
+
+  .day-card__rail {
+    grid-area: rail;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0.5rem;
+    border-right: 1px solid var(--color-sand);
+    gap: 0.5rem;
+  }
+
+  .day-card__arch-wrap {
+    grid-area: arch;
+    padding: 1.5rem 1rem;
+  }
+
+  .day-card__arch {
+    padding-top: 0;
+    flex: 1;
+    min-height: 0;
+    height: 100%;
+  }
+
+  .day-card__content {
+    grid-area: content;
+    padding: 2rem 1.75rem;
+    align-self: center;
+  }
+
+  .day-card__facts {
+    grid-area: facts;
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: none;
+    border-top: none;
+    border-left: 1px solid var(--color-sand);
+    margin: 0;
+  }
+
+  .day-card__fact {
+    flex: 1;
+    border-right: none;
+    border-bottom: 1px solid var(--color-sand);
+    padding: 1.5rem;
+  }
+
+  .day-card__fact:last-child {
+    border-bottom: none;
+  }
+
+  /* --- GUIDE CATEGORY GRID — 4 equal columns --- */
+  .guide-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* At desktop all categories are always open (no accordion) */
+  .guide-category__trigger {
+    pointer-events: none;
+    cursor: default;
+  }
+
+  .guide-category__panel {
+    grid-template-rows: 1fr;
+  }
+
+  /* --- GUIDE SECONDARY — 3 columns --- */
+  .guide-secondary__inner {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .guide-col--map {
+    grid-column: auto;
+  }
+
+  /* --- LOGISTICS — GLANCE STRIP — 5 inline columns with dividers --- */
+  .logistics-glance__inner {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .logistics-fact {
+    flex: 1;
+    padding: 0 2rem;
+  }
+
+  .logistics-fact:first-child {
+    padding-left: 0;
+  }
+
+  .logistics-fact:last-child {
+    grid-column: auto;
+    max-width: none;
+    flex: 1;
+  }
+
+  .logistics-fact-divider {
+    display: block;
+    width: 1px;
+    height: 44px;
+    background: var(--color-sand);
+    flex-shrink: 0;
+  }
+
+  /* --- LOGISTICS — CARD GRID — 4 columns --- */
+  .logistics-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* --- LOGISTICS INFO — 3 columns (skipping RSVP makes 2 visible) --- */
+  .logistics-info__inner {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* --- GROUP PORTRAITS — desktop doesn't scroll, shows as grid --- */
+  .group-portraits {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    overflow: visible;
+    padding-bottom: 0;
+  }
+
+  .group-portrait {
+    flex: none;
+    width: 100%;
+  }
+
+  .group-portrait__arch {
+    width: 100%;
+    height: auto;
+    padding-top: 125%; /* restore 4:5 aspect */
+    position: relative;
+  }
+
+  .group-portrait__arch img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+}
+
+
+/* ============================================================
+   ────────────────────────────────────────────────────────────
+   WIDE — min-width: 1440px
+   Container cap only — no layout changes
+   ────────────────────────────────────────────────────────────
+============================================================ */
+@media (min-width: 1440px) {
+
+  .container,
+  .previews__inner,
+  .highlights-section__inner,
+  .guide-categories__inner,
+  .guide-secondary__inner,
+  .logistics-cards__inner,
+  .logistics-glance__inner,
+  .itinerary-section,
+  .why-section__inner,
+  .group-section__inner {
+    max-width: var(--container-max);
+  }
+
+  /* At 1440+ the max-width container centers automatically.
+     Add padding inside the cap so content never touches the edge. */
+  .container { padding-inline: 6rem; }
+
+  /* Hero content cap */
+  .hero__content {
+    max-width: 900px;
+  }
+
+  /* Slightly taller hero on wide screens */
+  .hero {
+    min-height: 92vh;
+  }
+
+}
+
+
+/* ============================================================
+   ────────────────────────────────────────────────────────────
+   TOUCH & MOTION OPTIMIZATIONS
+   Scoped separately so non-motion rules aren't inside prefers
+   ────────────────────────────────────────────────────────────
+============================================================ */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .nav-links {
+    transition: none;
+    /* Still show/hide, but instantly */
+  }
+
+  .preview-card:hover .preview-card__arch img {
+    transform: none;
+  }
+}
+
+/* Touch device — remove hover states that linger */
+@media (hover: none) and (pointer: coarse) {
+  .preview-card:hover .preview-card__arch img {
+    transform: none;
+  }
+
+  /* Increase tap target breathing room */
+  .nav-link {
+    padding-block: 0.5rem;
+  }
+
+  .guide-category__trigger {
+    min-height: 56px;
+  }
+}
+
+/* Very small screens (320px minimum) — final safety net */
+@media (max-width: 374px) {
+  :root {
+    --text-h1-hero: clamp(2.4rem, 12vw, 3.5rem);
+    --container-pad-mobile: 1rem;
+  }
+
+  .hero__cta {
+    max-width: 100%;
+  }
+
+  .previews__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-card:last-child {
+    grid-column: auto;
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  .day-card__facts {
+    grid-template-columns: 1fr;
+  }
+
+  .day-card__fact {
+    border-right: none;
+    border-bottom: 1px solid var(--color-sand);
+  }
+}

@@ -3,102 +3,348 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Simi's Bachelorette · Mexico City</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <title>Simi's Bachelorette · Mexico City · July 30–Aug 2</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Allura&display=swap" rel="stylesheet" />
+
+  <!-- Design system layers -->
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/globals.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages/home.css" />
+  <!-- Responsive strategy — load last so breakpoints can override -->
+  <link rel="stylesheet" href="css/responsive.css" />
 </head>
 <body>
 
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-content">
-      <p class="eyebrow">bachelorette 2025</p>
-      <h1>Simi</h1>
-      <p class="dates">July 30 – August 2 · Mexico City</p>
-    </div>
-  </section>
+  <!-- ============================================================
+       SITE NAV
+  ============================================================ -->
+  <header class="site-nav" role="banner">
+    <a href="index.html" class="nav-logo" aria-label="Home">
+      <span class="nav-logo__text">CDMX</span>
+      <!-- Sun / face icon -->
+      <svg class="nav-logo__sun" width="18" height="18" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="16" cy="16" r="7" stroke="currentColor" stroke-width="1.5"/>
+        <!-- rays -->
+        <line x1="16" y1="1"  x2="16" y2="5"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="16" y1="27" x2="16" y2="31" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="1"  y1="16" x2="5"  y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="27" y1="16" x2="31" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="4.93"  y1="4.93"  x2="7.76"  y2="7.76"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="24.24" y1="24.24" x2="27.07" y2="27.07" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="27.07" y1="4.93"  x2="24.24" y2="7.76"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="7.76"  y1="24.24" x2="4.93"  y2="27.07" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- face dots -->
+        <circle cx="13.5" cy="15" r="1" fill="currentColor"/>
+        <circle cx="18.5" cy="15" r="1" fill="currentColor"/>
+        <path d="M13 19 Q16 21.5 19 19" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+      </svg>
+    </a>
 
-  <!-- THE TRIP -->
-  <section id="the-trip">
-    <div class="container">
-      <h2>The Trip</h2>
-      <p class="section-body"><!-- Overview blurb goes here --></p>
-    </div>
-  </section>
+    <!-- Hamburger (mobile) -->
+    <button class="nav-hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
 
-  <!-- ITINERARY -->
-  <section id="itinerary">
-    <div class="container">
-      <h2>Itinerary</h2>
-      <div class="days">
-        <div class="day">
-          <h3>Wednesday · July 30</h3>
-          <ul><!-- Events --></ul>
-        </div>
-        <div class="day">
-          <h3>Thursday · July 31</h3>
-          <ul><!-- Events --></ul>
-        </div>
-        <div class="day">
-          <h3>Friday · August 1</h3>
-          <ul><!-- Events --></ul>
-        </div>
-        <div class="day">
-          <h3>Saturday · August 2</h3>
-          <ul><!-- Events --></ul>
-        </div>
+    <nav class="nav-links" id="nav-links" aria-label="Primary navigation">
+      <a href="overview.html"   class="nav-link">Overview</a>
+      <a href="itinerary.html"  class="nav-link">Itinerary</a>
+      <a href="guide.html"      class="nav-link">Guide</a>
+      <a href="logistics.html"  class="nav-link">Logistics</a>
+    </nav>
+  </header>
+
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section class="hero" aria-labelledby="hero-heading">
+
+    <!-- Full-bleed background image -->
+    <div class="hero__bg" role="img" aria-label="Arched terracotta doorway surrounded by dense palms in Mexico City"></div>
+
+    <!-- Left-to-right gradient overlay -->
+    <div class="hero__overlay" aria-hidden="true"></div>
+
+    <!-- Grain texture overlay -->
+    <div class="hero__grain" aria-hidden="true"></div>
+
+    <!-- Hero content — left-aligned -->
+    <div class="hero__content">
+
+      <!-- Sun / face icon -->
+      <svg class="hero__sun-icon" width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="16" cy="16" r="7" stroke="currentColor" stroke-width="1.2"/>
+        <line x1="16" y1="1"  x2="16" y2="5"  stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="16" y1="27" x2="16" y2="31" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="1"  y1="16" x2="5"  y2="16" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="27" y1="16" x2="31" y2="16" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="4.93"  y1="4.93"  x2="7.76"  y2="7.76"  stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="24.24" y1="24.24" x2="27.07" y2="27.07" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="27.07" y1="4.93"  x2="24.24" y2="7.76"  stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="7.76"  y1="24.24" x2="4.93"  y2="27.07" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        <circle cx="13.5" cy="15" r="1" fill="currentColor"/>
+        <circle cx="18.5" cy="15" r="1" fill="currentColor"/>
+        <path d="M13 19 Q16 21.5 19 19" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+      </svg>
+
+      <!-- Eyebrow label -->
+      <p class="hero__eyebrow eyebrow">
+        <span aria-hidden="true">☀</span>&nbsp;A Bachelorette Getaway
+      </p>
+
+      <!-- Main headline — split across three lines for visual impact -->
+      <h1 class="hero__heading" id="hero-heading">
+        <span class="hero__heading-line">La Novia</span>
+        <span class="hero__heading-line">Se Va A</span>
+        <span class="hero__heading-line">CDMX</span>
+      </h1>
+
+      <!-- Sunrise ornament divider -->
+      <div class="hero__ornament" aria-hidden="true">
+        <span class="hero__ornament-line"></span>
+        <svg width="16" height="16" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- half-sun rising above horizon -->
+          <path d="M4 22 Q16 6 28 22" stroke="currentColor" stroke-width="1.4" fill="none"/>
+          <line x1="16" y1="4"  x2="16" y2="8"  stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          <line x1="4"  y1="12" x2="8"  y2="14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          <line x1="28" y1="12" x2="24" y2="14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          <line x1="1"  y1="22" x2="31" y2="22" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <span class="hero__ornament-line"></span>
       </div>
-    </div>
-  </section>
 
-  <!-- THINGS TO DO -->
-  <section id="things-to-do">
-    <div class="container">
-      <h2>Things To Do</h2>
-      <div class="categories">
-        <div class="category">
-          <h3>Eat</h3>
-          <ul><!-- Restaurants --></ul>
-        </div>
-        <div class="category">
-          <h3>Drink</h3>
-          <ul><!-- Bars & cantinas --></ul>
-        </div>
-        <div class="category">
-          <h3>Do</h3>
-          <ul><!-- Activities --></ul>
-        </div>
-        <div class="category">
-          <h3>Explore</h3>
-          <ul><!-- Neighborhoods & sights --></ul>
-        </div>
-      </div>
-    </div>
-  </section>
+      <!-- Body paragraph -->
+      <p class="hero__body">
+        Ten days. Ten friends. One bride. From late-night mezcal to Sunday morning mercados,
+        we're celebrating Simi in the city that never slows down — beautiful, chaotic, and entirely ours.
+      </p>
 
-  <!-- NEED TO KNOW -->
-  <section id="need-to-know">
-    <div class="container">
-      <h2>Need to Know</h2>
-      <div class="info-grid">
-        <div class="info-block">
-          <h3>Hotel</h3>
-          <p><!-- Hotel name, address, check-in details --></p>
-        </div>
-        <div class="info-block">
-          <h3>Getting There</h3>
-          <p><!-- Airport, transport from airport --></p>
-        </div>
-        <div class="info-block">
-          <h3>What to Pack</h3>
-          <p><!-- Packing tips, dress codes --></p>
-        </div>
-        <div class="info-block">
-          <h3>Group Chat</h3>
-          <p><!-- Link or contact info --></p>
-        </div>
+      <!-- Script accent -->
+      <p class="hero__script" lang="es">¡salud a ella!</p>
+
+      <!-- CTA button -->
+      <a href="overview.html" class="btn btn--outline-cream hero__cta">
+        Join the Celebration
+      </a>
+
+    </div><!-- /.hero__content -->
+
+    <!-- Quick facts strip — anchored to bottom of hero -->
+    <div class="hero__facts" role="complementary" aria-label="Trip at a glance">
+
+      <div class="hero__fact">
+        <span class="hero__fact-icon" aria-hidden="true">
+          <!-- Calendar icon -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2"/>
+            <line x1="3" y1="9" x2="21" y2="9"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+          </svg>
+        </span>
+        <span class="hero__fact-label eyebrow">Dates</span>
+        <span class="hero__fact-value">July 30 – Aug 2</span>
       </div>
-    </div>
-  </section>
+
+      <div class="hero__fact-divider" aria-hidden="true"></div>
+
+      <div class="hero__fact">
+        <span class="hero__fact-icon" aria-hidden="true">
+          <!-- Location pin icon -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s-8-6.5-8-12a8 8 0 0 1 16 0c0 5.5-8 12-8 12z"/>
+            <circle cx="12" cy="10" r="2.5"/>
+          </svg>
+        </span>
+        <span class="hero__fact-label eyebrow">Location</span>
+        <span class="hero__fact-value">Ciudad de México</span>
+      </div>
+
+      <div class="hero__fact-divider" aria-hidden="true"></div>
+
+      <div class="hero__fact">
+        <span class="hero__fact-icon" aria-hidden="true">
+          <!-- Sparkle / sun icon -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+          </svg>
+        </span>
+        <span class="hero__fact-label eyebrow">Vibes</span>
+        <span class="hero__fact-value">Tropics, culture &amp; a little chaos</span>
+      </div>
+
+    </div><!-- /.hero__facts -->
+
+  </section><!-- /.hero -->
+
+
+  <!-- ============================================================
+       SECTION PREVIEW CARDS ROW
+  ============================================================ -->
+  <section class="previews" aria-labelledby="previews-heading">
+    <div class="previews__inner">
+
+      <p class="previews__eyebrow eyebrow" id="previews-heading">
+        <span aria-hidden="true">☀</span>&nbsp;Explore the Weekend
+      </p>
+
+      <div class="previews__grid" role="list">
+
+        <!-- Card 1 — The Plan -->
+        <a href="overview.html" class="preview-card" role="listitem">
+          <div class="preview-card__arch-wrap">
+            <div class="preview-card__arch">
+              <img
+                src="/images/preview/the-plan.jpg"
+                alt="Colorful colonial courtyard in Mexico City"
+                loading="lazy"
+                width="280"
+                height="350"
+              />
+            </div>
+          </div>
+          <div class="preview-card__label">
+            <span class="preview-card__eyebrow eyebrow">01</span>
+            <span class="preview-card__title">The Plan</span>
+          </div>
+        </a>
+
+        <!-- Card 2 — The Days -->
+        <a href="itinerary.html" class="preview-card" role="listitem">
+          <div class="preview-card__arch-wrap">
+            <div class="preview-card__arch">
+              <img
+                src="/images/preview/the-days.jpg"
+                alt="Rooftop terrace with Mexico City skyline at dusk"
+                loading="lazy"
+                width="280"
+                height="350"
+              />
+            </div>
+          </div>
+          <div class="preview-card__label">
+            <span class="preview-card__eyebrow eyebrow">02</span>
+            <span class="preview-card__title">The Days</span>
+          </div>
+        </a>
+
+        <!-- Card 3 — Eat + Drink -->
+        <a href="guide.html" class="preview-card preview-card--featured" role="listitem">
+          <div class="preview-card__arch-wrap">
+            <div class="preview-card__arch">
+              <img
+                src="/images/preview/eat-drink.jpg"
+                alt="Mezcal cocktails and tacos at a candlelit Mexico City bar"
+                loading="lazy"
+                width="280"
+                height="350"
+              />
+            </div>
+          </div>
+          <div class="preview-card__label">
+            <span class="preview-card__eyebrow eyebrow">03</span>
+            <span class="preview-card__title">Eat&nbsp;+ Drink</span>
+          </div>
+        </a>
+
+        <!-- Card 4 — The Guide -->
+        <a href="guide.html" class="preview-card" role="listitem">
+          <div class="preview-card__arch-wrap">
+            <div class="preview-card__arch">
+              <img
+                src="/images/preview/the-guide.jpg"
+                alt="Bright tiled walls in Coyoacan neighborhood"
+                loading="lazy"
+                width="280"
+                height="350"
+              />
+            </div>
+          </div>
+          <div class="preview-card__label">
+            <span class="preview-card__eyebrow eyebrow">04</span>
+            <span class="preview-card__title">The Guide</span>
+          </div>
+        </a>
+
+        <!-- Card 5 — The Details -->
+        <a href="logistics.html" class="preview-card" role="listitem">
+          <div class="preview-card__arch-wrap">
+            <div class="preview-card__arch">
+              <img
+                src="/images/preview/the-details.jpg"
+                alt="Luggage and fresh flowers on a hotel room floor"
+                loading="lazy"
+                width="280"
+                height="350"
+              />
+            </div>
+          </div>
+          <div class="preview-card__label">
+            <span class="preview-card__eyebrow eyebrow">05</span>
+            <span class="preview-card__title">The Details</span>
+          </div>
+        </a>
+
+      </div><!-- /.previews__grid -->
+
+      <!-- Gold divider -->
+      <div class="gold-divider" aria-hidden="true">
+        <span class="gold-divider__line"></span>
+        <svg width="14" height="14" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="5" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="16" y1="2"  x2="16" y2="8"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="16" y1="24" x2="16" y2="30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="2"  y1="16" x2="8"  y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="24" y1="16" x2="30" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span class="gold-divider__line"></span>
+      </div>
+
+    </div><!-- /.previews__inner -->
+  </section><!-- /.previews -->
+
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+
+      <p class="site-footer__heading">
+        Can't wait for the best weekend!
+      </p>
+
+      <p class="site-footer__script">xo, your bach crew ♡</p>
+
+      <div class="gold-divider gold-divider--sm" aria-hidden="true">
+        <span class="gold-divider__line"></span>
+        <svg width="12" height="12" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="5" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="16" y1="2"  x2="16" y2="8"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="16" y1="24" x2="16" y2="30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="2"  y1="16" x2="8"  y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="24" y1="16" x2="30" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span class="gold-divider__line"></span>
+      </div>
+
+      <nav class="site-footer__nav" aria-label="Footer navigation">
+        <a href="overview.html"  class="site-footer__nav-link">Overview</a>
+        <a href="itinerary.html" class="site-footer__nav-link">Itinerary</a>
+        <a href="guide.html"     class="site-footer__nav-link">Guide</a>
+        <a href="logistics.html" class="site-footer__nav-link">Logistics</a>
+      </nav>
+
+      <p class="site-footer__legal">Simi's Bachelorette · CDMX · July 2025</p>
+
+    </div><!-- /.site-footer__inner -->
+  </footer>
+
 
   <script src="js/main.js"></script>
 </body>

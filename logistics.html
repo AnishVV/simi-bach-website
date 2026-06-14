@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logistics · Simi's Bachelorette CDMX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Allura&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/logistics.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       NAV
+  ═══════════════════════════════════════════ -->
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">
+      <svg class="sun-icon" width="18" height="18" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="18" cy="18" r="8" fill="currentColor"/>
+        <path d="M18 2v4M18 30v4M2 18h4M30 18h4M6.34 6.34l2.83 2.83M26.83 26.83l2.83 2.83M26.83 9.17l2.83-2.83M6.34 29.66l2.83-2.83" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <!-- face marks -->
+        <circle cx="15" cy="17" r="1.2" fill="var(--color-forest)"/>
+        <circle cx="21" cy="17" r="1.2" fill="var(--color-forest)"/>
+        <path d="M14.5 21.5 Q18 24 21.5 21.5" stroke="var(--color-forest)" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+      </svg>
+      <span class="nav-logo-text">CDMX</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="overview.html">Overview</a></li>
+      <li><a href="itinerary.html">Itinerary</a></li>
+      <li><a href="guide.html">Guide</a></li>
+      <li><a href="logistics.html" class="nav-active">Logistics</a></li>
+    </ul>
+    <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile nav drawer -->
+  <div class="nav-drawer" aria-hidden="true">
+    <ul>
+      <li><a href="overview.html">Overview</a></li>
+      <li><a href="itinerary.html">Itinerary</a></li>
+      <li><a href="guide.html">Guide</a></li>
+      <li><a href="logistics.html" class="nav-active">Logistics</a></li>
+    </ul>
+  </div>
+  <div class="nav-overlay"></div>
+
+
+  <!-- ═══════════════════════════════════════════
+       HERO — dark terracotta
+  ═══════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-texture"></div>
+    <div class="hero-inner">
+
+      <div class="eyebrow">
+        <svg class="eyebrow-sun" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"/>
+          <path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M17.66 6.34l2.12-2.12M4.22 19.78l2.12-2.12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        THE DETAILS
+      </div>
+
+      <h1 class="hero-headline">LOGISTICS</h1>
+
+      <div class="hero-ornament" aria-hidden="true">
+        <span class="ornament-line"></span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--color-candle-gold)" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"/>
+          <path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M17.66 6.34l2.12-2.12M4.22 19.78l2.12-2.12" stroke="var(--color-candle-gold)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="ornament-line"></span>
+      </div>
+
+      <p class="hero-body">
+        Everything you need to know before, during, and after the trip.
+        We've handled the details so you can show up and celebrate.
+      </p>
+
+      <p class="hero-script">¡salud a ella!</p>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       FACTS STRIP — cream
+  ═══════════════════════════════════════════ -->
+  <section class="facts-strip">
+    <p class="facts-eyebrow">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <circle cx="12" cy="12" r="5"/>
+        <path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M17.66 6.34l2.12-2.12M4.22 19.78l2.12-2.12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      AT A GLANCE
+    </p>
+
+    <div class="facts-row">
+
+      <div class="fact-item">
+        <div class="fact-icon">
+          <!-- Calendar -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+        </div>
+        <p class="fact-label">DATES</p>
+        <p class="fact-value">July 30 – Aug 2<br/><span class="fact-sub">4 nights</span></p>
+      </div>
+
+      <div class="fact-divider" aria-hidden="true"></div>
+
+      <div class="fact-item">
+        <div class="fact-icon">
+          <!-- Pin -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <p class="fact-label">LOCATION</p>
+        <p class="fact-value">Ciudad de México<br/><span class="fact-sub">Condesa / Roma</span></p>
+      </div>
+
+      <div class="fact-divider" aria-hidden="true"></div>
+
+      <div class="fact-item">
+        <div class="fact-icon">
+          <!-- People -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+        </div>
+        <p class="fact-label">GROUP SIZE</p>
+        <p class="fact-value">~10 people<br/><span class="fact-sub">the whole crew</span></p>
+      </div>
+
+      <div class="fact-divider" aria-hidden="true"></div>
+
+      <div class="fact-item">
+        <div class="fact-icon">
+          <!-- Star/sparkle -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+        </div>
+        <p class="fact-label">VIBES</p>
+        <p class="fact-value">Tropics + culture<br/><span class="fact-sub">a little chaos</span></p>
+      </div>
+
+      <div class="fact-divider" aria-hidden="true"></div>
+
+      <div class="fact-item">
+        <div class="fact-icon">
+          <!-- Moon/night -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+          </svg>
+        </div>
+        <p class="fact-label">PLANS</p>
+        <p class="fact-value">Day adventures<br/><span class="fact-sub">night memories</span></p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       MAIN LOGISTICS GRID — forest green, 4 cols
+  ═══════════════════════════════════════════ -->
+  <section class="logistics-main">
+    <div class="section-header">
+      <p class="eyebrow eyebrow--light">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"/>
+          <path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M17.66 6.34l2.12-2.12M4.22 19.78l2.12-2.12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        WHAT YOU NEED TO KNOW
+      </p>
+    </div>
+
+    <div class="logistics-grid">
+
+      <!-- CARD: STAY -->
+      <article class="logistics-card">
+        <div class="card-icon">
+          <!-- Home/building -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+
+        <h2 class="card-title">STAY</h2>
+
+        <div class="card-image-wrap">
+          <img
+            src="images/stay-placeholder.jpg"
+            alt="Our accommodations in Condesa"
+            class="card-image"
+            onerror="this.parentElement.classList.add('card-image-missing')"
+          />
+          <div class="card-image-fallback" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+            </svg>
+          </div>
+        </div>
+
+        <p class="card-body">
+          We're staying in the heart of Condesa/Roma Norte — think lush tree-lined streets,
+          walkable everything, and a home base that feels like a retreat.
+        </p>
+
+        <ul class="card-bullets">
+          <li>Pool, rooftop + lots of natural light</li>
+          <li>2–3 people per room</li>
+          <li>Check-in: July 30 · Check-out: Aug 2</li>
+          <li>Address: <em>[Placeholder — address TBD]</em></li>
+        </ul>
+
+        <a href="#questions" class="card-link">Questions about the stay →</a>
+      </article>
+
+
+      <!-- CARD: GETTING AROUND -->
+      <article class="logistics-card">
+        <div class="card-icon">
+          <!-- Car/map -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+        </div>
+
+        <h2 class="card-title">GETTING AROUND</h2>
+
+        <div class="card-image-wrap">
+          <img
+            src="images/transport-placeholder.jpg"
+            alt="Streets of Condesa Roma"
+            class="card-image"
+            onerror="this.parentElement.classList.add('card-image-missing')"
+          />
+          <div class="card-image-fallback" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+            </svg>
+          </div>
+        </div>
+
+        <p class="card-body">
+          No rental car needed. CDMX is incredibly easy to navigate and
+          Uber is reliable, safe, and cheap — you'll use it constantly.
+        </p>
+
+        <ul class="card-bullets">
+          <li>Uber: safe, affordable, works great in CDMX</li>
+          <li>Metro for longer rides (we'll guide you!)</li>
+          <li>Both neighborhoods are very walkable</li>
+          <li>No need to rent a car</li>
+        </ul>
+
+        <a href="https://www.uber.com" target="_blank" rel="noopener" class="card-link">Download Uber before you arrive →</a>
+      </article>
+
+
+      <!-- CARD: WHAT TO PACK -->
+      <article class="logistics-card">
+        <div class="card-icon">
+          <!-- Bag/suitcase -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/>
+          </svg>
+        </div>
+
+        <h2 class="card-title">WHAT TO PACK</h2>
+
+        <div class="card-image-wrap">
+          <img
+            src="images/packing-placeholder.jpg"
+            alt="Packing essentials"
+            class="card-image"
+            onerror="this.parentElement.classList.add('card-image-missing')"
+          />
+          <div class="card-image-fallback" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+            </svg>
+          </div>
+        </div>
+
+        <p class="card-body">
+          CDMX in July is warm and occasionally rainy. Pack light,
+          breathable layers and bring your going-out energy.
+        </p>
+
+        <ul class="card-bullets">
+          <li>Light, breathable outfits (it's warm!)</li>
+          <li>Comfortable walking shoes — you will walk</li>
+          <li>Swimsuit + cover-up</li>
+          <li>Sunscreen, bug spray, lip balm</li>
+          <li>Power adapter (Type A/B — same as US)</li>
+          <li>Portable charger</li>
+          <li>At least one nice dinner look</li>
+        </ul>
+
+        <a href="guide.html" class="card-link">See the full guide for dress codes →</a>
+      </article>
+
+
+      <!-- CARD: BUDGET + COST -->
+      <article class="logistics-card">
+        <div class="card-icon">
+          <!-- Currency/coin -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+            <path d="M9 12h6"/>
+          </svg>
+        </div>
+
+        <h2 class="card-title">BUDGET + COST</h2>
+
+        <div class="card-image-wrap">
+          <img
+            src="images/budget-placeholder.jpg"
+            alt="Mezcal and good times"
+            class="card-image"
+            onerror="this.parentElement.classList.add('card-image-missing')"
+          />
+          <div class="card-image-fallback" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+            </svg>
+          </div>
+        </div>
+
+        <p class="card-body">
+          We kept it fair and fun. <em>[Per-person cost TBD]</em> covers
+          the essentials — flights are on you.
+        </p>
+
+        <ul class="card-bullets">
+          <li><strong>[Per-person cost placeholder]</strong></li>
+          <li>Flights not included</li>
+          <li>Included: 4-night stay</li>
+          <li>Included: group activities</li>
+          <li>Included: some meals + welcome gift</li>
+          <li>Meals outside group plans: on you</li>
+        </ul>
+
+        <a href="#questions" class="card-link">Questions about cost? Ask us →</a>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       SECONDARY GRID — forest green, 2 cols
+       (PAYMENTS | IMPORTANT NOTES)
+  ═══════════════════════════════════════════ -->
+  <section class="logistics-secondary">
+
+    <div class="logistics-grid logistics-grid--2col">
+
+      <!-- CARD: PAYMENTS -->
+      <article class="logistics-card logistics-card--alt">
+        <div class="card-icon">
+          <!-- Credit card -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/>
+          </svg>
+        </div>
+
+        <h2 class="card-title">PAYMENTS</h2>
+
+        <p class="card-body">
+          We want to make this as easy as possible. A flexible payment plan
+          is available — put down a deposit to lock in your spot,
+          pay the rest closer to the trip.
+        </p>
+
+        <ul class="card-bullets">
+          <li>Deposit required to confirm your spot</li>
+          <li>Balance due: <em>[Date TBD]</em></li>
+          <li>Payment method: <em>[Venmo / Zelle / etc. — TBD]</em></li>
+          <li>Payment plan available on request</li>
+          <li>All amounts in USD</li>
+        </ul>
+
+        <div class="card-note">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          Reach out to the crew with any payment questions.
+        </div>
+
+        <a href="#questions" class="card-link">Contact us about payments →</a>
+      </article>
+
+
+      <!-- CARD: IMPORTANT NOTES -->
+      <article class="logistics-card logistics-card--alt">
+        <div class="card-icon">
+          <!-- Clipboard / checklist -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/>
+            <line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/>
+          </svg>
+        </div>
+
+        <h2 class="card-title">IMPORTANT NOTES</h2>
+
+        <p class="card-body">
+          A few things to handle before you pack your bags.
+          We want everyone to travel stress-free.
+        </p>
+
+        <ul class="card-bullets">
+          <li>Passport must be valid 6+ months after Aug 2, 2025</li>
+          <li>Travel insurance is strongly recommended</li>
+          <li>Let us know about any dietary restrictions</li>
+          <li>No visa required for US citizens (tourist card at entry)</li>
+          <li>Respect the casa, the city + each other</li>
+          <li>Debit/credit cards widely accepted; pesos handy for markets</li>
+        </ul>
+
+        <div class="card-note">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+          Booking travel insurance? We recommend doing it within 14 days of your deposit.
+        </div>
+
+        <a href="#questions" class="card-link">Something else on your mind? →</a>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       QUESTIONS BAND — dark terracotta
+  ═══════════════════════════════════════════ -->
+  <section class="questions-band" id="questions">
+    <div class="questions-texture"></div>
+
+    <div class="questions-inner">
+      <p class="eyebrow">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"/>
+          <path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M17.66 6.34l2.12-2.12M4.22 19.78l2.12-2.12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        GET IN TOUCH
+      </p>
+
+      <h2 class="questions-headline">QUESTIONS?</h2>
+      <p class="questions-script">We got you.</p>
+
+      <p class="questions-body">
+        Whether it's about payments, the itinerary, packing, or anything in between —
+        we're here. Reach out through any of the channels below
+        and someone from the crew will get back to you fast.
+      </p>
+
+      <div class="contact-columns">
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <!-- WhatsApp -->
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="currentColor" opacity=".9"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.122 1.529 5.857L0 24l6.335-1.492A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.848 0-3.576-.476-5.086-1.313L2.5 21.5l.84-4.32A9.958 9.958 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" fill="currentColor"/>
+            </svg>
+          </div>
+          <p class="contact-label">WHATSAPP</p>
+          <p class="contact-value">Group chat link coming soon</p>
+          <a href="#" class="contact-link">Join the group chat</a>
+        </div>
+
+        <div class="contact-divider" aria-hidden="true"></div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <!-- Instagram -->
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </div>
+          <p class="contact-label">INSTAGRAM</p>
+          <p class="contact-value">DM the crew</p>
+          <a href="#" class="contact-link">@[placeholder handle]</a>
+        </div>
+
+        <div class="contact-divider" aria-hidden="true"></div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <!-- Email -->
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <p class="contact-label">EMAIL</p>
+          <p class="contact-value">For the longer questions</p>
+          <a href="mailto:placeholder@example.com" class="contact-link">placeholder@example.com</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER — forest green
+  ═══════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+
+      <div class="footer-col footer-col--brand">
+        <div class="footer-logo">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="18" cy="18" r="8" fill="currentColor"/>
+            <path d="M18 2v4M18 30v4M2 18h4M30 18h4M6.34 6.34l2.83 2.83M26.83 26.83l2.83 2.83M26.83 9.17l2.83-2.83M6.34 29.66l2.83-2.83" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="15" cy="17" r="1.2" fill="var(--color-forest)"/>
+            <circle cx="21" cy="17" r="1.2" fill="var(--color-forest)"/>
+            <path d="M14.5 21.5 Q18 24 21.5 21.5" stroke="var(--color-forest)" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+          </svg>
+          <span>CDMX</span>
+        </div>
+        <p class="footer-brand-sub">A Bachelorette Getaway</p>
+        <p class="footer-script-sm">¡salud a ella!</p>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-label">EXPLORE</p>
+        <ul class="footer-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="overview.html">Overview</a></li>
+          <li><a href="itinerary.html">Itinerary</a></li>
+          <li><a href="guide.html">Guide</a></li>
+          <li><a href="logistics.html">Logistics</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-label">THE TRIP</p>
+        <ul class="footer-nav">
+          <li><a href="logistics.html#stay">Where we're staying</a></li>
+          <li><a href="logistics.html#transport">Getting around</a></li>
+          <li><a href="logistics.html#pack">What to pack</a></li>
+          <li><a href="logistics.html#budget">Budget + cost</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-label">GET IN TOUCH</p>
+        <ul class="footer-nav">
+          <li><a href="#">WhatsApp group</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="mailto:placeholder@example.com">Email us</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-divider" aria-hidden="true"></div>
+
+    <p class="footer-sign-off">
+      CAN'T WAIT FOR THE BEST WEEKEND!<br />
+      <span class="footer-sign-off-script">xo, your bach crew ♡</span>
+    </p>
+
+  </footer>
+
+
+  <script>
+    // Mobile nav toggle
+    const hamburger = document.querySelector('.nav-hamburger');
+    const drawer = document.querySelector('.nav-drawer');
+    const overlay = document.querySelector('.nav-overlay');
+
+    function openNav() {
+      drawer.classList.add('is-open');
+      overlay.classList.add('is-visible');
+      hamburger.setAttribute('aria-expanded', 'true');
+      drawer.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeNav() {
+      drawer.classList.remove('is-open');
+      overlay.classList.remove('is-visible');
+      hamburger.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = drawer.classList.contains('is-open');
+      isOpen ? closeNav() : openNav();
+    });
+
+    overlay.addEventListener('click', closeNav);
+
+    // Nav scroll: add .is-scrolled after hero clears
+    const nav = document.querySelector('.site-nav');
+    const heroEl = document.querySelector('.hero');
+    const navObserver = new IntersectionObserver(
+      ([entry]) => nav.classList.toggle('is-scrolled', !entry.isIntersecting),
+      { threshold: 0 }
+    );
+    if (heroEl) navObserver.observe(heroEl);
+
+    // Scroll reveal — lightweight IntersectionObserver
+    const revealEls = document.querySelectorAll('.logistics-card, .fact-item, .contact-item');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+  </script>
+
+</body>
+</html>

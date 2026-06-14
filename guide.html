@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Guide · Simi's Bachelorette · CDMX</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Allura&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/guide.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+
+</head>
+
+<body>
+
+  <!-- =========================================================
+       NAVIGATION
+  ========================================================= -->
+  <nav class="site-nav" aria-label="Main navigation">
+
+    <!-- Logo -->
+    <a href="index.html" class="nav-logo">
+      <!-- Sun / face SVG -->
+      <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.2"/>
+        <line x1="12" y1="1" x2="12" y2="4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="12" y1="20" x2="12" y2="23" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="1" y1="12" x2="4" y2="12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="20" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="4.22" y1="4.22" x2="6.34" y2="6.34" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="17.66" y1="17.66" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="19.78" y1="4.22" x2="17.66" y2="6.34" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="6.34" y1="17.66" x2="4.22" y2="19.78" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      CDMX ☀
+    </a>
+
+    <!-- Desktop nav links -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="overview.html">Overview</a></li>
+      <li><a href="itinerary.html">Itinerary</a></li>
+      <li><a href="guide.html" class="active">Guide</a></li>
+      <li><a href="logistics.html">Logistics</a></li>
+    </ul>
+
+    <!-- Mobile hamburger -->
+    <button class="nav-hamburger" id="navToggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </nav>
+
+
+  <!-- =========================================================
+       1. HERO
+  ========================================================= -->
+  <section class="guide-hero grain-overlay">
+    <div class="guide-hero__bg"></div>
+    <div class="guide-hero__arch-deco"></div>
+
+    <div class="guide-hero__content container">
+
+      <!-- Eyebrow -->
+      <p class="eyebrow guide-hero__eyebrow">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.2"/>
+          <line x1="12" y1="1" x2="12" y2="4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="12" y1="20" x2="12" y2="23" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="1" y1="12" x2="4" y2="12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="20" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="4.22" y1="4.22" x2="6.34" y2="6.34" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="17.66" y1="17.66" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="19.78" y1="4.22" x2="17.66" y2="6.34" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="6.34" y1="17.66" x2="4.22" y2="19.78" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        The Curated Guide
+      </p>
+
+      <!-- Headline -->
+      <h1 class="guide-hero__headline">
+        CDMX<br>FAVORITES
+      </h1>
+
+      <!-- Ornament line -->
+      <div class="guide-hero__ornament">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="5" stroke="#C7A46A" stroke-width="1.2"/>
+          <line x1="12" y1="1" x2="12" y2="4" stroke="#C7A46A" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="12" y1="20" x2="12" y2="23" stroke="#C7A46A" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="1" y1="12" x2="4" y2="12" stroke="#C7A46A" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="20" y1="12" x2="23" y2="12" stroke="#C7A46A" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <!-- Script -->
+      <span class="guide-hero__script">Eat well. Drink better.<br>Explore more.</span>
+
+      <!-- Body -->
+      <p class="guide-hero__body">
+        We've done the research so you don't have to. From legendary taquería counters
+        to world-class speakeasies and the soul-ful streets of Coyoacán — this is the
+        CDMX that Simi deserves.
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       2. CATEGORY GRID
+  ========================================================= -->
+  <section class="category-section">
+    <div class="container">
+
+      <!-- Section header -->
+      <div class="category-section__header">
+        <p class="eyebrow category-section__pre-eyebrow">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="color: var(--color-sage);">
+            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.2"/>
+            <line x1="12" y1="1" x2="12" y2="4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="12" y1="20" x2="12" y2="23" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="1" y1="12" x2="4" y2="12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="20" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          Where to go · What to do
+        </p>
+        <h2 class="category-section__title">The Edit</h2>
+        <div class="gold-divider--centered" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="5" stroke="#C7A46A" stroke-width="1.3"/>
+            <line x1="12" y1="1" x2="12" y2="4" stroke="#C7A46A" stroke-width="1.3" stroke-linecap="round"/>
+            <line x1="12" y1="20" x2="12" y2="23" stroke="#C7A46A" stroke-width="1.3" stroke-linecap="round"/>
+            <line x1="1" y1="12" x2="4" y2="12" stroke="#C7A46A" stroke-width="1.3" stroke-linecap="round"/>
+            <line x1="20" y1="12" x2="23" y2="12" stroke="#C7A46A" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- 4-column grid -->
+      <div class="category-grid">
+
+        <!-- ── EAT ── -->
+        <div class="category-col">
+          <div class="category-col__header">
+            <!-- Fork icon -->
+            <svg class="category-col__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M8 2v4a4 4 0 0 0 4 4 4 4 0 0 0 4-4V2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+              <line x1="12" y1="10" x2="12" y2="22" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+              <path d="M6 2v6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+              <line x1="6" y1="8" x2="6" y2="22" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+            <span class="category-col__label">EAT</span>
+            <div class="category-col__divider"></div>
+          </div>
+
+          <!-- Arched image -->
+          <div class="category-col__arch" aria-hidden="true">
+            <!-- images/guide-eat.jpg when available -->
+            <div style="width:100%;height:100%;background:linear-gradient(160deg,#A8614B 0%,#6E3428 100%);display:flex;align-items:center;justify-content:center;">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" opacity="0.3">
+                <path d="M8 2v4a4 4 0 0 0 4 4 4 4 0 0 0 4-4V2" stroke="#F6EBD8" stroke-width="1.3" stroke-linecap="round"/>
+                <line x1="12" y1="10" x2="12" y2="22" stroke="#F6EBD8" stroke-width="1.3" stroke-linecap="round"/>
+                <path d="M6 2v6" stroke="#F6EBD8" stroke-width="1.3" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Venues -->
+          <ul class="category-col__venues">
+            <li class="venue-item">
+              <h3 class="venue-item__name">El Califa de León</h3>
+              <p class="venue-item__desc">Legendary tacos — Michelin-starred, counter only, pure perfection.</p>
+            </li>
+            <li class="venue-item">
+              <h3 class="venue-item__name">Rosetta</h3>
+              <p class="venue-item__desc">Chef Elena Reygadas · Italian-Mexican, in a 1906 mansion in Roma.</p>
+            </li>
+            <li class="venue-item">
+              <h3 class="venue-item__name">Lalo!</h3>
+              <p class="venue-item__desc">All-day café, cult following, the best chilaquiles in the city.</p>
+            </li>
+          </ul>
+
+          <!-- CTA -->
+          <a href="#" class="btn-outline category-col__cta" style="color:var(--color-terracotta);">
+            <span>View All · Eat</span>
+          </a>
+        </div>
+
+        <!-- ── DRINK ── -->
+        <div class="category-col">
+          <div class="category-col__header">
+            <!-- Glass icon -->
+            <svg class="category-col__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 2l2.5 11a5 5 0 0 0 9 0L19 2H5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+              <line x1="12" y1="17" x2="12" y2="22" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+              <line x1="8" y1="22" x2="16" y2="22" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+            <span class="category-col__label">DRINK</span>
+            <div class="category-col__divider"></div>
+          </div>
+
+          <!-- Arched image -->
+          <div class="category-col__arch" aria-hidden="true">
+            <div style="width:100%;height:100%;background:linear-gradient(160deg,#244634 0%,#173526 100%);display:flex;align-items:center;justify-content:center;">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" opacity="0.3">
+                <path d="M5 2l2.5 11a5 5 0 0 0 9 0L19 2H5z" stroke="#F6EBD8" stroke-width="1.3" stroke-linejoin="round"/>
+                <line x1="12" y1="17" x2="12" y2="22" stroke="#F6EBD8" stroke-width="1.3" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Venues -->
+          <ul class="category-col__venues">
+            <li class="venue-item">
+              <h3 class="venue-item__name">Handshake Speakeasy</h3>
+              <p class="venue-item__desc">World's Best Bar 2023. Reservation required — book immediately.</p>
+            </li>
+            <li class="venue-item">
+              <h3 class="venue-item__name">Parker & Lenox</h3>
+              <p class="venue-item__desc">Rooftop cocktails + live jazz, Roma Norte · pure golden hour energy.</p>
+            </li>
+            <li class="venue-item">
+              <h3 class="venue-item__name">Licorería Limantour</h3>
+              <p class="venue-item__desc">Classic craft cocktails — polished, precise, no-pretension cool.</p>
+            </li>
+          </ul>
+
+          <a href="#" class="btn-outline category-col__cta" style="color:var(--color-terracotta);">
+            <span>View All · Drink</span>
+          </a>
+        </div>
+
+        <!-- ── DO ── -->
+        <div class="category-col">
+          <div class="category-col__header">
+            <!-- Sparkle / activity icon -->
+            <svg class="category-col__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+            </svg>
+            <span class="category-col__label">DO</span>
+            <div class="category-col__divider"></div>
+          </div>
+
+          <!-- Arched image -->
+          <div class="category-col__arch" aria-hidden="true">
+            <div style="width:100%;height:100%;background:linear-gradient(160deg,#788863 0%,#244634 100%);display:flex;align-items:center;justify-content:center;">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" opacity="0.3">
+                <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z" stroke="#F6EBD8" stroke-width="1.3" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Venues -->
+          <ul class="category-col__venues">
+            <li class="venue-item">
+              <h3 class="venue-item__name">Soma Spa / Balnea</h3>
+              <p class="venue-item__desc">Temazcal + massage — the reset your body needs after night one.</p>
+            </li>
+            <li class="venue-item">
+              <h3 class="venue-item__name">Museo Frida Kahlo</h3>
+              <p class="venue-item__desc">La Casa Azul, Coyoacán — emotional, essential, book in advance.</p>
+            </li>
+            <li class="venue-item">
+              <h3 class="venue-item__name">Cine Tonalá</h3>
+              <p class="venue-item__desc">Films + mezcal + rooftop terrace · culture without the stuffiness.</p>
+            </li>
+          </ul>
+
+          <a href="#" class="btn-outline category-col__cta" style="color:var(--color-terracotta);">
+            <span>View All · Do</span>
+          </a>
+        </div>
+
+        <!-- ── EXPLORE ── -->
+        <div class="category-col">
+          <div class="category-col__header">
+            <!-- Map pin icon -->
+            <svg class="category-col__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+              <circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.3"/>
+            </svg>
+            <span class="category-col__label">EXPLORE</span>
+            <div class="category-col__divider"></div>
+          </div>
+
+          <!-- Arched image -->
+          <div class="category-col__arch" aria-hidden="true">
+            <div style="width:100%;height:100%;background:linear-gradient(160deg,#D99084 0%,#A8614B 100%);display:flex;align-items:center;justify-content:center;">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" opacity="0.3">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#F6EBD8" stroke-width="1.3" stroke-linejoin="round"/>
+                <circle cx="12" cy="9" r="2.5" stroke="#F6EBD8" stroke-width="1.3"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Venues -->
+          <ul class="category-col__venues">
+            <li class="venue-item">
+              <h3 class="venue-item__name">Roma Norte</h3>
+              <p class="venue-item__desc">Tree-lined streets, morning cafés, independent boutiques, perfect light.</p>
+            </li>
+            <li class="venue-item">
+              <h3 class="venue-item__name">Condesa</h3>
+              <p class="venue-item__desc">Art deco architecture, leafy parks, the city's most stylish energy.</p>
+            </li>
+            <li class="venue-item">
+              <h3 class="venue-item__name">Coyoacán</h3>
+              <p class="venue-item__desc">Colorful, historic, deeply local — Sunday market soul of CDMX.</p>
+            </li>
+          </ul>
+
+          <a href="#" class="btn-outline category-col__cta" style="color:var(--color-terracotta);">
+            <span>View All · Explore</span>
+          </a>
+        </div>
+
+      </div><!-- /category-grid -->
+    </div><!-- /container -->
+  </section>
+
+
+  <!-- =========================================================
+       3. DARK SECTION — SAVED SPOTS / EXPERIENCES / MAP
+  ========================================================= -->
+  <section class="dark-section grain-overlay">
+
+    <div class="dark-section__inner">
+
+      <!-- ── COL 1: SAVED SPOTS ── -->
+      <div class="dark-col dark-col--saved">
+        <p class="eyebrow dark-col__eyebrow">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.2"/>
+            <line x1="12" y1="1" x2="12" y2="4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="12" y1="20" x2="12" y2="23" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="1" y1="12" x2="4" y2="12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="20" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          Don't miss these
+        </p>
+        <h2 class="dark-col__title">Saved<br>Spots</h2>
+        <div class="dark-col__gold-line"></div>
+
+        <ul class="saved-spots-list">
+
+          <li class="saved-spot">
+            <div class="saved-spot__thumb" aria-hidden="true" style="background:linear-gradient(135deg,#788863,#244634);"></div>
+            <div class="saved-spot__info">
+              <h3 class="saved-spot__name">Café Nin</h3>
+              <p class="saved-spot__desc">Matcha, mood lighting, and the right people — a moment disguised as a coffee order.</p>
+            </div>
+            <svg class="saved-spot__bookmark" width="14" height="18" viewBox="0 0 14 18" fill="none" aria-hidden="true">
+              <path d="M1 1h12v16l-6-4-6 4V1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+            </svg>
+          </li>
+
+          <li class="saved-spot">
+            <div class="saved-spot__thumb" aria-hidden="true" style="background:linear-gradient(135deg,#A8614B,#6E3428);"></div>
+            <div class="saved-spot__info">
+              <h3 class="saved-spot__name">Panadería Rosetta</h3>
+              <p class="saved-spot__desc">Guava rolls that sell out by 9am. Set an alarm. Worth every early morning.</p>
+            </div>
+            <svg class="saved-spot__bookmark" width="14" height="18" viewBox="0 0 14 18" fill="none" aria-hidden="true">
+              <path d="M1 1h12v16l-6-4-6 4V1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+            </svg>
+          </li>
+
+          <li class="saved-spot">
+            <div class="saved-spot__thumb" aria-hidden="true" style="background:linear-gradient(135deg,#D99084,#A8614B);"></div>
+            <div class="saved-spot__info">
+              <h3 class="saved-spot__name">Quintonil</h3>
+              <p class="saved-spot__desc">If budget allows — reservation essential. Chef Jorge Vallejo's finest indigenous cuisine.</p>
+            </div>
+            <svg class="saved-spot__bookmark" width="14" height="18" viewBox="0 0 14 18" fill="none" aria-hidden="true">
+              <path d="M1 1h12v16l-6-4-6 4V1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+            </svg>
+          </li>
+
+          <li class="saved-spot">
+            <div class="saved-spot__thumb" aria-hidden="true" style="background:linear-gradient(135deg,#C7A46A,#788863);"></div>
+            <div class="saved-spot__info">
+              <h3 class="saved-spot__name">Salón Malafama</h3>
+              <p class="saved-spot__desc">Mezcalería with great vibes — dimly lit, cumbia-adjacent, zero attitude.</p>
+            </div>
+            <svg class="saved-spot__bookmark" width="14" height="18" viewBox="0 0 14 18" fill="none" aria-hidden="true">
+              <path d="M1 1h12v16l-6-4-6 4V1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+            </svg>
+          </li>
+
+          <li class="saved-spot">
+            <div class="saved-spot__thumb" aria-hidden="true" style="background:linear-gradient(135deg,#244634,#173526);"></div>
+            <div class="saved-spot__info">
+              <h3 class="saved-spot__name">Mercado Roma</h3>
+              <p class="venue-item__desc">Fresh market bites, mezcal flights, and the best people-watching in Roma.</p>
+            </div>
+            <svg class="saved-spot__bookmark" width="14" height="18" viewBox="0 0 14 18" fill="none" aria-hidden="true">
+              <path d="M1 1h12v16l-6-4-6 4V1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+            </svg>
+          </li>
+
+        </ul>
+      </div>
+
+
+      <!-- ── COL 2: MUST-BOOK EXPERIENCES ── -->
+      <div class="dark-col dark-col--experiences">
+        <p class="eyebrow dark-col__eyebrow">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.2"/>
+            <line x1="12" y1="1" x2="12" y2="4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="12" y1="20" x2="12" y2="23" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="1" y1="12" x2="4" y2="12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="20" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          Book before you land
+        </p>
+        <h2 class="dark-col__title">Must-Book<br>Experiences</h2>
+        <div class="dark-col__gold-line"></div>
+
+        <ul class="experiences-list">
+
+          <li class="experience-item">
+            <div class="experience-item__arch" aria-hidden="true" style="background:linear-gradient(180deg,#A8614B,#6E3428);"></div>
+            <div class="experience-item__info">
+              <p class="experience-item__label">☀ Villa Exclusive</p>
+              <h3 class="experience-item__title">Private Chef Dinner</h3>
+              <p class="experience-item__desc">A curated CDMX dinner, plated at the villa — the most memorable night of the weekend.</p>
+            </div>
+          </li>
+
+          <li class="experience-item">
+            <div class="experience-item__arch" aria-hidden="true" style="background:linear-gradient(180deg,#788863,#244634);"></div>
+            <div class="experience-item__info">
+              <p class="experience-item__label">☀ Expert Led</p>
+              <h3 class="experience-item__title">Mezcal Tasting</h3>
+              <p class="experience-item__desc">Guided by a mezcalero — terroir, ritual, and a few smoky revelations. Not your average tasting.</p>
+            </div>
+          </li>
+
+          <li class="experience-item">
+            <div class="experience-item__arch" aria-hidden="true" style="background:linear-gradient(180deg,#C7A46A,#788863);"></div>
+            <div class="experience-item__info">
+              <p class="experience-item__label">☀ Sunrise Adventure</p>
+              <h3 class="experience-item__title">Hot Air Balloon · Teotihuacán</h3>
+              <p class="experience-item__desc">Rise above the Pyramids of the Sun at dawn. Float over 2,000-year-old ruins as Mexico City glows below. Life-changing and we mean it.</p>
+            </div>
+          </li>
+
+          <li class="experience-item">
+            <div class="experience-item__arch" aria-hidden="true" style="background:linear-gradient(180deg,#D99084,#A8614B);"></div>
+            <div class="experience-item__info">
+              <p class="experience-item__label">☀ Wellness</p>
+              <h3 class="experience-item__title">Temazcal Ceremony</h3>
+              <p class="experience-item__desc">Pre-Hispanic sweat lodge ritual — steam, copal, intention setting. Transformative before a big night.</p>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+
+
+      <!-- ── COL 3: VIBE MAP ── -->
+      <div class="dark-col dark-col--map">
+        <p class="eyebrow dark-col__eyebrow">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.2"/>
+            <line x1="12" y1="1" x2="12" y2="4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="12" y1="20" x2="12" y2="23" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="1" y1="12" x2="4" y2="12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="20" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          Navigate the city
+        </p>
+        <h2 class="dark-col__title">Our<br>Vibe Map</h2>
+        <div class="dark-col__gold-line"></div>
+
+        <!-- Styled map card -->
+        <div class="vibe-map-card">
+          <div class="vibe-map-card__bg"></div>
+          <div class="vibe-map-card__lines"></div>
+
+          <div class="vibe-map-card__pins">
+
+            <div class="map-pin">
+              <div class="map-pin__dot" style="background:#D99084;"></div>
+              <span class="map-pin__label" style="color:#D99084;">Roma Norte</span>
+              <span class="map-pin__note">Cafés · Bars · Boutiques</span>
+            </div>
+
+            <div class="map-pin">
+              <div class="map-pin__dot" style="background:#C7A46A;"></div>
+              <span class="map-pin__label" style="color:#C7A46A;">Condesa</span>
+              <span class="map-pin__note">Parks · Art Deco · Brunch</span>
+            </div>
+
+            <div class="map-pin">
+              <div class="map-pin__dot" style="background:#788863;"></div>
+              <span class="map-pin__label" style="color:#788863;">Centro Histórico</span>
+              <span class="map-pin__note">Zócalo · Palacio · Tacos</span>
+            </div>
+
+            <div class="map-pin">
+              <div class="map-pin__dot" style="background:#A8614B;"></div>
+              <span class="map-pin__label" style="color:#A8614B;">Coyoacán</span>
+              <span class="map-pin__note">Frida · Markets · Soul</span>
+            </div>
+
+            <div class="map-pin">
+              <div class="map-pin__dot" style="background:rgba(246,235,216,0.6);"></div>
+              <span class="map-pin__label" style="color:rgba(246,235,216,0.7);">Xochimilco</span>
+              <span class="map-pin__note">Trajineras · Mariachis</span>
+            </div>
+
+            <div class="map-pin">
+              <div class="map-pin__dot" style="background:#6E3428;"></div>
+              <span class="map-pin__label" style="color:#6E3428;">Polanco</span>
+              <span class="map-pin__note">Galleries · Fine Dining</span>
+            </div>
+
+          </div>
+
+          <div class="vibe-map-card__footer">
+            <span class="vibe-map-card__script">la ciudad es tuya</span>
+          </div>
+        </div>
+
+        <!-- Tip note below map -->
+        <p style="margin-top:1.25rem; font-family:var(--font-sans); font-size:0.75rem; color:rgba(246,235,216,0.45); line-height:1.6; letter-spacing:0.01em;">
+          Pro tip: Roma Norte and Condesa are walkable between each other. Everything else is a quick Uber — budget 40–80 MXN per ride.
+        </p>
+
+      </div>
+
+    </div><!-- /dark-section__inner -->
+  </section>
+
+
+  <!-- =========================================================
+       4. LOCAL TIP BANNER
+  ========================================================= -->
+  <div class="tip-banner">
+
+    <!-- Left: image -->
+    <div class="tip-banner__image tip-banner__image--placeholder" aria-hidden="true">
+      <!-- images/guide-tip.jpg when available -->
+      <div class="tip-banner__arch-deco" aria-hidden="true"></div>
+      <!-- Decorative typography stamp -->
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:2;padding:2rem;text-align:center;">
+        <span style="font-family:var(--font-display);font-size:clamp(3rem,8vw,7rem);font-weight:300;line-height:0.88;letter-spacing:0.01em;text-transform:uppercase;color:rgba(246,235,216,0.12);">CDMX</span>
+      </div>
+    </div>
+
+    <!-- Right: content -->
+    <div class="tip-banner__content">
+      <p class="eyebrow tip-banner__eyebrow">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="color:rgba(246,235,216,0.7);">
+          <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.2"/>
+          <line x1="12" y1="1" x2="12" y2="4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="12" y1="20" x2="12" y2="23" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="1" y1="12" x2="4" y2="12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="20" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        Local Tip
+      </p>
+      <div class="tip-banner__ornament"></div>
+      <h2 class="tip-banner__headline">Slow Down<br>& Soak<br>It In</h2>
+      <p class="tip-banner__body">
+        Mexico City rewards the unhurried. The best moments here happen between the plans —
+        the street taco you didn't know you needed, the cantina you ducked into out of curiosity,
+        the morning coffee that turned into a two-hour conversation.
+        <br><br>
+        Resist the urge to optimize every hour. The city will give you more than you could ever schedule.
+      </p>
+      <span class="tip-banner__script">That's the vibe.</span>
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+       5. FOOTER
+  ========================================================= -->
+  <footer class="site-footer">
+
+    <!-- Sun icon -->
+    <div class="site-footer__sun" style="width:28px;height:28px;">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="5" stroke="#C7A46A" stroke-width="1.2"/>
+        <line x1="12" y1="1" x2="12" y2="4" stroke="#C7A46A" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="12" y1="20" x2="12" y2="23" stroke="#C7A46A" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="1" y1="12" x2="4" y2="12" stroke="#C7A46A" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="20" y1="12" x2="23" y2="12" stroke="#C7A46A" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="4.22" y1="4.22" x2="6.34" y2="6.34" stroke="#C7A46A" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="17.66" y1="17.66" x2="19.78" y2="19.78" stroke="#C7A46A" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="19.78" y1="4.22" x2="17.66" y2="6.34" stroke="#C7A46A" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="6.34" y1="17.66" x2="4.22" y2="19.78" stroke="#C7A46A" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <p class="site-footer__headline">Can't Wait for the Best Weekend!</p>
+    <span class="site-footer__script">xo, your bach crew ♡</span>
+
+    <div class="site-footer__divider"></div>
+
+    <nav class="site-footer__nav" aria-label="Footer navigation">
+      <a href="index.html">Home</a>
+      <a href="overview.html">Overview</a>
+      <a href="itinerary.html">Itinerary</a>
+      <a href="guide.html">Guide</a>
+      <a href="logistics.html">Logistics</a>
+    </nav>
+
+    <p class="site-footer__copy">Simi's Bachelorette · Mexico City · July 30 – August 2, 2025</p>
+
+  </footer>
+
+
+  <!-- =========================================================
+       JS — Mobile nav toggle
+  ========================================================= -->
+  <script>
+    (function () {
+      var toggle = document.getElementById('navToggle');
+      var links  = document.getElementById('navLinks');
+      if (!toggle || !links) return;
+
+      toggle.addEventListener('click', function () {
+        var open = links.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        // Lock body scroll when menu is open
+        document.body.style.overflow = open ? 'hidden' : '';
+      });
+
+      // Close menu when a link is clicked
+      links.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          links.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
